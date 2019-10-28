@@ -1,5 +1,5 @@
 'use strict';
-// import React from 'react';
+import React from 'react';
 // import { View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -15,6 +15,9 @@ import BadHabitScreen from './screens/badHabitScreen';
 const MainScreenTabNavigator = createBottomTabNavigator({
     GoodHabits: GoodHabitScreen,
     BadHabits: BadHabitScreen
+},
+{
+    initialRouteName: "GoodHabits",
 })
 
 export default createAppContainer(MainScreenTabNavigator);
