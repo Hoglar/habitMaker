@@ -1,11 +1,11 @@
 'use strict';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 
 // Import screens
-import CreateHabitScreen from 'CreateHabitScreen.js';
-import HabitDetailScreen from 'HabitDetailScreen.js';
+import CreateHabitScreen from './createHabitScreen.js';
+import HabitDetailScreen from './habitDetailScreen.js';
 
 
 class GoodHabitScreen extends React.Component {
@@ -13,18 +13,20 @@ class GoodHabitScreen extends React.Component {
         return (
             <View>
                 <Text>
-                    Hello! Good Habits die hard!
+                    Hello! Good Habits die hard why so hard!
                 </Text>
             </View>
         )
     }
 }
 
-export default const GoodHabitStack = createStackNavigator({
+const GoodHabitStack = createStackNavigator({
     GoodHabitsHome: GoodHabitScreen,
-    GoodHabit: CreateHabitScreen,
-    habitDetail: HabitDetailScreen
+    CreateHabit: CreateHabitScreen,
+    HabitDetail: HabitDetailScreen
 },
 {
-    initialRouteName: GoodHabitsHome
+    initialRouteName: "GoodHabitsHome"
 })
+
+export default GoodHabitStack;
