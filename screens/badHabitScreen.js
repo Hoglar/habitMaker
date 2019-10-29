@@ -2,7 +2,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default class BadHabitScreen extends React.Component {
+// Import screens
+import CreateHabitScreen from 'CreateHabitScreen.js';
+import HabitDetailScreen from 'HabitDetailScreen.js';
+
+class BadHabitScreen extends React.Component {
     render() {
         return (
             <View>
@@ -13,3 +17,12 @@ export default class BadHabitScreen extends React.Component {
         )
     }
 }
+
+export default const GoodHabitStack = createStackNavigator({
+    BadHabitsHome: BadHabitScreen,
+    CreateHabit: CreateHabitScreen,
+    HabitDetail: HabitDetailScreen
+},
+{
+    initialRouteName: BadHabitsHome
+})
