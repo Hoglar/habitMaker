@@ -8,6 +8,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 // screens
 import GoodHabitStack from './screens/goodHabitScreen.js';
 import BadHabitStack from './screens/badHabitScreen.js';
+import AchivementsScreen from './screens/achivementsScreen.js';
 
 
 
@@ -15,7 +16,8 @@ import BadHabitStack from './screens/badHabitScreen.js';
 // we get to the bad habits.
 const MainScreenTabNavigator = createBottomTabNavigator({
     GoodHabits: GoodHabitStack,
-    BadHabits: BadHabitStack
+    BadHabits: BadHabitStack,
+    Achivements: AchivementsScreen
 },
 {
     initialRouteName: "GoodHabits",
