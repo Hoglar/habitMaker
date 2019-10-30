@@ -9,12 +9,24 @@ import HabitDetailScreen from './habitDetailScreen.js';
 
 
 class GoodHabitScreen extends React.Component {
+
+    static navigationOptions = ({navigation}) => {
+        return {
+            headerTitle: "Random inspiration word?",
+            headerRight: () => (
+                <Button
+                    onPress={() => navigation.navigate('CreateHabit')}
+                    title="Create"
+                    color="green"
+                />
+            )
+        }
+    }
+
     render() {
         return (
             <View>
-                <Text>
-                    Hello! Good Habits die hard why so hard!
-                </Text>
+
             </View>
         )
     }

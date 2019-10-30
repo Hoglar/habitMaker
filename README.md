@@ -15,3 +15,4 @@ What else do we need?
     The app will be small sized so i wont be using redux.
 
 expo may need some extra installations based on features i want to use.
+https://wisdomquotes.com/short-quotes/
