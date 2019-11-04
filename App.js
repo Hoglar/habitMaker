@@ -6,6 +6,12 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 // importing redux store
 import store from './redux/store/store.js';
 
+// Import actions
+import addHabit from './redux/actions/addHabit.js';
+
+console.log(store.getState());
+store.dispatch(addHabit({title: "Hello friendss", id: 1}));
+store.dispatch(addHabit({title: "The first habit", description: "hehehe"}))
 console.log(store.getState());
 
 // screens
