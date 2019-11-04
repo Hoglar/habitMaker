@@ -7,18 +7,24 @@ import { createStackNavigator } from 'react-navigation-stack';
 import CreateHabitScreen from './createHabitScreen.js';
 import HabitDetailScreen from './habitDetailScreen.js';
 
+import store from '../redux/store/store.js';
+import changeQuote from '../redux/actions/changeQuote.js';
+
+store.dispatch(changeQuote());
 
 class GoodHabitScreen extends React.Component {
 
     static navigationOptions = ({navigation}) => {
         return {
-            headerTitle: "Random inspiration word?",
             headerRight: () => (
-                <Button
-                    onPress={() => navigation.navigate('CreateHabit')}
-                    title="Create"
-                    color="green"
-                />
+                <View style={{margin: 10}}>
+                    <Button
+                        onPress={() => navigation.navigate('CreateHabit')}
+                        title="Create"
+                        color="green"
+                    />
+                </View>
+
             )
         }
     }
@@ -32,13 +38,37 @@ class GoodHabitScreen extends React.Component {
     }
 }
 
+function CustomHeader(title) {
+    return (
+        <View>
+            <Text style={{
+                fontSize: 17,
+                fontWeight: "300",
+                margin: 10,
+                marginRight: 50,
+                color: "#3A3F3D"
+            }}>
+                {title + "."}
+            </Text>
+        </View>
+    )
+};
+
 const GoodHabitStack = createStackNavigator({
     GoodHabitsHome: GoodHabitScreen,
     CreateHabit: CreateHabitScreen,
     HabitDetail: HabitDetailScreen
 },
 {
-    initialRouteName: "GoodHabitsHome"
+    initialRouteName: "GoodHabitsHome",
+    defaultNavigationOptions: {
+        headerTitle: CustomHeader(store.getState().quote.text),
+
+        headerStyle: {
+            backgroundColor: '#84A1FF',
+
+        }
+    }
 })
 
 export default GoodHabitStack;
