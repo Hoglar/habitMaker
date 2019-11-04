@@ -8,11 +8,7 @@ import store from './redux/store/store.js';
 
 // Import actions
 import addHabit from './redux/actions/addHabit.js';
-
-console.log(store.getState());
-store.dispatch(addHabit({title: "Hello friendss", id: 1}));
-store.dispatch(addHabit({title: "The first habit", description: "hehehe"}))
-console.log(store.getState());
+import changeQuote from './redux/actions/changeQuote.js';
 
 // screens
 import GoodHabitStack from './screens/goodHabitScreen.js';

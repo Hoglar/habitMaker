@@ -1,173 +1,182 @@
 'use strict';
-// Vi lager en funksjon som gir tilbake en random short quote.
+// Vi lager en funksjon som gir tilbake en random short text.
 
 // Guess we only need an array?
 
 const shortQuotes = [
     {
-        quote: "You can totally do this",
+        text: "You can totally do this",
         author: "unknown"
     },
     {
-        quote: "Impossible is for the unwilling",
+        text: "Impossible is for the unwilling",
         author: "John Keats"
     },
     {
-        quote: "No pressure, no diamonds",
+        text: "No pressure, no diamonds",
         author: "Thomas Carlyle"
     },
     {
-        quote: "Stay foolish to stay sane",
+        text: "Stay foolish to stay sane",
         author: "Maxime Lagacé"
     },
     {
-        quote: "When nothing goes right, go left",
+        text: "When nothing goes right, go left",
         author: "unknown"
     },
     {
-        quote: "Try Again. Fail again. Fail better",
+        text: "Try Again. Fail again. Fail better",
         author: "Samuel Beckett"
     },
     {
-        quote: "Don’t tell people your plans. Show them your results",
+        text: "Don’t tell people your plans. Show them your results",
         author: "unknown"
     },
     {
-        quote: "I can and I will",
+        text: "I can and I will",
         author: "unknown"
     },
     {
-        quote: "Take the risk or lose the chance",
+        text: "Take the risk or lose the chance",
         author: "unknown"
     },
     {
-        quote: "Prove them wrong",
+        text: "Prove them wrong",
         author: "unknown"
     },
     {
-        quote: "And so the adventure begins",
+        text: "And so the adventure begins",
         author: "unknown"
     },
     {
-        quote: "Leave no stone unturned",
+        text: "Leave no stone unturned",
         author: "Euripides"
     },
     {
-        quote: "Stay hungry. Stay foolish",
+        text: "Stay hungry. Stay foolish",
         author: "Steve Jobs"
     },
     {
-        quote: "Broken crayons still color",
+        text: "Broken crayons still color",
         author: "unknown"
     },
     {
-        quote: "If you want it, work for it",
+        text: "If you want it, work for it",
         author: "unknown"
     },
     {
-        quote: "You can if you think you can",
+        text: "You can if you think you can",
         author: "George Reeves"
     },
     {
-        quote: "Whatever you are, be a good one",
+        text: "Whatever you are, be a good one",
         author: "Abraham Lincoln"
     },
     {
-        quote: "Grow through what you go through",
+        text: "Grow through what you go through",
         author: "unknown"
     },
     {
-        quote: "Do it with passion or not at all",
+        text: "Do it with passion or not at all",
         author: "unknown"
     },
     {
-        quote: "She believed she could, so she did",
+        text: "She believed she could, so she did",
         author: "unknown"
     },
     {
-        quote: "The past does not equal the future",
+        text: "The past does not equal the future",
         author: "Tony Robbins"
     },
     {
-        quote: "Good things happen to those who hustle",
+        text: "Good things happen to those who hustle",
         author: "Anaïs Nin"
     },
     {
-        quote: "At the end of hardship comes happiness",
+        text: "At the end of hardship comes happiness",
         author: "unknown"
     },
     {
-        quote: "If it matters to you, you’ll find a way",
+        text: "If it matters to you, you’ll find a way",
         author: "Charlie Gilkey"
     },
     {
-        quote: "Forget about style; worry about results",
+        text: "Forget about style; worry about results",
         author: "Bobby Orr"
     },
     {
-        quote: "Whatever you do, do with all your might",
+        text: "Whatever you do, do with all your might",
         author: "Marcus Tullius Cicero"
     },
     {
-        quote: "Dream without fear. Love without limits",
+        text: "Dream without fear. Love without limits",
         author: "unknown"
     },
     {
-        quote: "Every noble work is at first impossible",
+        text: "Every noble work is at first impossible",
         author: "Thomas Carlyle"
     },
     {
-        quote: "If you’re going through hell, keep going",
+        text: "If you’re going through hell, keep going",
         author: "Winston Churchill"
     },
     {
-        quote: "You can do anything you set your mind to",
+        text: "You can do anything you set your mind to",
         author: "unknown"
     },
     {
-        quote: "We are twice armed if we fight with faith",
+        text: "We are twice armed if we fight with faith",
         author: "Plato"
     },
     {
-        quote: "The wisest mind has something yet to learn",
+        text: "The wisest mind has something yet to learn",
         author: "George Santanaya"
     },
     {
-        quote: "Open your mind. Get up off the couch. Move",
+        text: "Open your mind. Get up off the couch. Move",
         author: "Anthony Bourdain"
     },
     {
-        quote: "Be faithful to that which exists within yourself",
+        text: "Be faithful to that which exists within yourself",
         author: "André Gide"
     },
     {
-        quote: "",
-        author: "unknown"
+        text: "Persistence guarantees that results are inevitable",
+        author: "Paramahansa Yogananda"
     },
     {
-        quote: "",
-        author: "unknown"
+        text: "In life you need either inspiration or desperation",
+        author: "Tony Robbins"
     },
     {
-        quote: "",
-        author: "unknown"
+        text: "I would rather die on my feet than live on my knees",
+        author: "Euripides"
     },
     {
-        quote: "",
-        author: "unknown"
+        text: "The true success is the person who invented himself",
+        author: "Al Goldstein"
     },
     {
-        quote: "",
-        author: "unknown"
+        text: "Let him that would move the world first move himself",
+        author: "Socrates"
     },
     {
-        quote: "",
-        author: "unknown"
+        text: "Go forth on your path, as it exists only through your walking",
+        author: "Augustine of Hippo"
     },
     {
-        quote: "",
-        author: "unknown"
+        text: "We can do anything we want to if we stick to it long enough",
+        author: "Helen Keller"
     },
-
-
+    {
+        text: "It does not matter how slowly you go as long as you do not stop",
+        author: "Confucius"
+    },
+    {
+        text: "Fall seven times, stand up eight",
+        author: "Japanese proverb"
+    }
+    // Part 2 Short uplifting
 ]
+
+export default shortQuotes;
