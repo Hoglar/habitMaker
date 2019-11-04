@@ -1,9 +1,12 @@
 'use strict';
 import React from 'react';
-// import { View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
+// importing redux store
+import store from './redux/store/store.js';
+
+console.log(store.getState());
 
 // screens
 import GoodHabitStack from './screens/goodHabitScreen.js';
