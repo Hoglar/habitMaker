@@ -1,9 +1,15 @@
 'use strict';
 import { createStore } from "redux";
-import rootReducer from '../reducers/rootReducer.js';
+import reducer from '../reducers/rootReducer.js';
 
 //Pre loaded state, we should get state from the app.
 
-const store = createStore(rootReducer);
+const preLoadedState = {
+    goodHabits: [],
+    badHabits: [],
+    quote: {}
+};
+
+const store = createStore(reducer, preLoadedState);
 
 export default store;
