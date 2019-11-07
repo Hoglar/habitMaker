@@ -1,43 +1,42 @@
 'use strict';
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import { createStackNavigator } from 'react-navigation-stack';
+import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 
-// Import screens
-import CreateHabitScreen from './createHabitScreen.js';
-import HabitDetailScreen from './habitDetailScreen.js';
+import store from '../redux/store/store.js';
+import changeQuote from '../redux/actions/changeQuote.js';
+
+// Importing components
+import CustomHeader from '../components/customHeader.js';
+import Habit from '../components/habit.js';
+
+store.dispatch(changeQuote());
 
 class BadHabitScreen extends React.Component {
+
     static navigationOptions = ({navigation}) => {
         return {
-            headerTitle: "Random inspiration word?",
             headerRight: () => (
-                <Button
-                    onPress={() => navigation.navigate('CreateHabit')}
-                    title="Create"
-                    color="green"
-                />
+                <View style={{margin: 10}}>
+                    <Button
+                        onPress={() => navigation.navigate('CreateHabit')}
+                        title="Create"
+                        color="green"
+                    />
+                </View>
+
             )
         }
     }
 
     render() {
         return (
-            <View>
-
-            </View>
+            <ScrollView>
+                {store.getState().goodHabits.map((habit) => {
+                    <Habit />
+                })}
+            </ScrollView>
         )
     }
 }
 
-
-const BadHabitStack = createStackNavigator({
-    BadHabitsHome: BadHabitScreen,
-    CreateHabit: CreateHabitScreen,
-    HabitDetail: HabitDetailScreen
-},
-{
-    initialRouteName: "BadHabitsHome"
-})
-
-export default BadHabitStack;
+export default BadHabitScreen;

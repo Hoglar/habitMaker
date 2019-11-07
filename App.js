@@ -2,6 +2,7 @@
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { Provider } from 'react-redux'
 
 // importing redux store
 import store from './redux/store/store.js';
@@ -11,8 +12,8 @@ import addHabit from './redux/actions/addHabit.js';
 import changeQuote from './redux/actions/changeQuote.js';
 
 // screens
-import GoodHabitStack from './screens/goodHabitScreen.js';
-import BadHabitStack from './screens/badHabitScreen.js';
+import GoodHabitStack from './screens/goodHabitStack.js';
+import BadHabitStack from './screens/badHabitStack.js';
 import AchivementsScreen from './screens/achivementsScreen.js';
 
 store.dispatch(addHabit({text: "lalala"}))
