@@ -1,6 +1,6 @@
 'use strict';
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 
 // Import screens
@@ -9,6 +9,10 @@ import HabitDetailScreen from './habitDetailScreen.js';
 
 import store from '../redux/store/store.js';
 import changeQuote from '../redux/actions/changeQuote.js';
+
+// Importing components
+import CustomHeader from '../components/customHeader.js';
+import Habit from '../components/habit.js';
 
 store.dispatch(changeQuote());
 
@@ -31,28 +35,15 @@ class GoodHabitScreen extends React.Component {
 
     render() {
         return (
-            <View>
-
-            </View>
+            <ScrollView>
+                {store.getState().goodHabits.map((habit) => {
+                    <Habit />
+                })}
+            </ScrollView>
         )
     }
 }
 
-function CustomHeader(title) {
-    return (
-        <View>
-            <Text style={{
-                fontSize: 17,
-                fontWeight: "300",
-                margin: 10,
-                marginRight: 50,
-                color: "#3A3F3D"
-            }}>
-                {title + "."}
-            </Text>
-        </View>
-    )
-};
 
 const GoodHabitStack = createStackNavigator({
     GoodHabitsHome: GoodHabitScreen,

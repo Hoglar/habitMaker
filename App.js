@@ -15,6 +15,8 @@ import GoodHabitStack from './screens/goodHabitScreen.js';
 import BadHabitStack from './screens/badHabitScreen.js';
 import AchivementsScreen from './screens/achivementsScreen.js';
 
+store.dispatch(addHabit({text: "lalala"}))
+console.log(store.getState());
 
 
 // We start the app in the Good habit screen. and with a press at bottom
