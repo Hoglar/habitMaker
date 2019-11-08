@@ -11,8 +11,6 @@ import GoodHabitScreen from './goodHabitScreen.js';
 // Importing components
 import CustomHeader from '../components/customHeader.js';
 
-import store from '../redux/store/store.js';
-
 const GoodHabitStack = createStackNavigator({
     GoodHabitsHome: GoodHabitScreen,
     CreateHabit: CreateHabitScreen,
@@ -21,7 +19,7 @@ const GoodHabitStack = createStackNavigator({
 {
     initialRouteName: "GoodHabitsHome",
     defaultNavigationOptions: {
-        headerTitle: CustomHeader(store.getState().quote.text),
+        headerTitle: <CustomHeader />,
 
         headerStyle: {
             backgroundColor: '#84A1FF',
@@ -29,5 +27,7 @@ const GoodHabitStack = createStackNavigator({
         }
     }
 })
+
+
 
 export default GoodHabitStack;

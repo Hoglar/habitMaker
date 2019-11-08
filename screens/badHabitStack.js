@@ -21,7 +21,7 @@ const BadHabitStack = createStackNavigator({
 {
     initialRouteName: "BadHabitsHome",
     defaultNavigationOptions: {
-        headerTitle: CustomHeader(store.getState().quote.text),
+        headerTitle: <CustomHeader />,
 
         headerStyle: {
             backgroundColor: '#84A1FF',

@@ -5,7 +5,9 @@ import reducer from '../reducers/rootReducer.js';
 //Pre loaded state, we should get state from the app.
 
 const preLoadedState = {
-    goodHabits: [],
+    goodHabits: [
+        {title: "Clean everyday"}
+    ],
     badHabits: [],
     quote: {}
 };

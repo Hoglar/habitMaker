@@ -16,10 +16,6 @@ import GoodHabitStack from './screens/goodHabitStack.js';
 import BadHabitStack from './screens/badHabitStack.js';
 import AchivementsScreen from './screens/achivementsScreen.js';
 
-store.dispatch(addHabit({text: "lalala"}))
-console.log(store.getState());
-
-
 // We start the app in the Good habit screen. and with a press at bottom
 // we get to the bad habits.
 const MainScreenTabNavigator = createBottomTabNavigator({
@@ -31,4 +27,14 @@ const MainScreenTabNavigator = createBottomTabNavigator({
     initialRouteName: "GoodHabits",
 })
 
-export default createAppContainer(MainScreenTabNavigator);
+let RootNavigation = createAppContainer(MainScreenTabNavigator);
+
+export default class App extends React.Component {
+    render() {
+        return(
+            <Provider store={store}>
+                <RootNavigation />
+            </Provider>
+        )
+    }
+};

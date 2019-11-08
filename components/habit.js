@@ -12,7 +12,7 @@ export default class Habit extends React.Component {
 
     render() {
         return(
-            <View>
+            <View style={{height: 20}}>
                 <Text>
                     Good Habit
                 </Text>

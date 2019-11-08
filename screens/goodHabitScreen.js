@@ -1,17 +1,21 @@
 'use strict';
 import React from 'react';
 import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
+import { connect } from 'react-redux';
 
-import store from '../redux/store/store.js';
 import changeQuote from '../redux/actions/changeQuote.js';
 
 // Importing components
 import CustomHeader from '../components/customHeader.js';
 import Habit from '../components/habit.js';
 
-store.dispatch(changeQuote());
+// Import actions
+import addHabit from '../redux/actions/addHabit.js';
 
 class GoodHabitScreen extends React.Component {
+    constructor(props) {
+        super(props)
+    }
 
     static navigationOptions = ({navigation}) => {
         return {
@@ -29,14 +33,21 @@ class GoodHabitScreen extends React.Component {
     }
 
     render() {
+        console.log(this.props.goodHabits);
+
         return (
-            <ScrollView>
-                {store.getState().goodHabits.map((habit) => {
-                    <Habit />
-                })}
+            <ScrollView style={{flex: 1, backgroundColor: "blue"}}>
+                {this.props.goodHabits.map((habit, index) => (
+                    <Habit key={index}/>
+                ))}
             </ScrollView>
         )
     }
 }
 
-export default GoodHabitScreen;
+
+
+const mapStateToProps = state => ({
+    goodHabits: state.goodHabits
+})
+export default connect(mapStateToProps)(GoodHabitScreen);
