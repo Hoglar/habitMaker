@@ -1,6 +1,7 @@
 'use strict';
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 // access to store?
 
 // Ok, lets make an Habit.
@@ -26,6 +27,7 @@ const styles = StyleSheet.create({
     }
 })
 
+
 export default class Habit extends React.Component {
 
     render() {
@@ -35,7 +37,7 @@ export default class Habit extends React.Component {
                 <Text style={styles.text}>
                     {this.props.title}
                 </Text>
-                <Button title="Details"></Button>
+                <FontAwesome.Button name="angle-right" backgroundColor="teal" size={30}></FontAwesome.Button>
             </View>
         )
     }
