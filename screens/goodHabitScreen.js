@@ -32,13 +32,30 @@ class GoodHabitScreen extends React.Component {
         }
     }
 
+    componentDidMount() {
+        console.log("We got here")
+        this.props.dispatch(addHabit({title: "Hehehehehe"}))
+        this.props.dispatch(addHabit({title: "Hehehehehe"}))
+        this.props.dispatch(addHabit({title: "Hehehehehe"}))
+        this.props.dispatch(addHabit({title: "Hehehehehe"}))
+        this.props.dispatch(addHabit({title: "Hehehehehe"}))
+        this.props.dispatch(addHabit({title: "Hehehehehe"}))
+        this.props.dispatch(addHabit({title: "Hehehehehe"}))
+        this.props.dispatch(addHabit({title: "Hehehehehe"}))
+        this.props.dispatch(addHabit({title: "Hehehehehe"}))
+        this.props.dispatch(addHabit({title: "Hehehehehe"}))
+        
+    }
+
     render() {
         console.log(this.props.goodHabits);
+        //this.props.dispatch(addHabit({title: "Hehehehehe"}))
 
         return (
-            <ScrollView style={{flex: 1, backgroundColor: "blue"}}>
+            <ScrollView style={{flex: 1}}>
                 {this.props.goodHabits.map((habit, index) => (
-                    <Habit key={index}/>
+                    <Habit  key={index}
+                            title={habit.title}/>
                 ))}
             </ScrollView>
         )
