@@ -16,16 +16,28 @@ import { FontAwesome } from '@expo/vector-icons';
 
 const styles = StyleSheet.create({
     box: {
-        height: 40,
+        height: 50,
         backgroundColor: "teal",
         flexDirection: "row",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
+        alignItems: "center",
         margin: 3
     },
     text: {
 
     }
 })
+
+const myButton = (
+  <FontAwesome.Button
+      iconStyle={{marginTop: 3}}
+      padding={6}
+      name="chevron-right"
+      backgroundColor="transparent"
+      size={26}
+      onPress={()=> {console.log("Hello")}}>
+  </FontAwesome.Button>
+);
 
 
 export default class Habit extends React.Component {
@@ -37,7 +49,7 @@ export default class Habit extends React.Component {
                 <Text style={styles.text}>
                     {this.props.title}
                 </Text>
-                <FontAwesome.Button name="angle-right" backgroundColor="teal" size={30}></FontAwesome.Button>
+                {myButton}
             </View>
         )
     }
