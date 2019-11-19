@@ -7,18 +7,18 @@ class HabitDetailScreen extends React.Component {
     render() {
         const index = this.props.navigation.getParam("habitIndex", "err");
         const goodOrBad = this.props.navigation.getParam("goodOrbad", "err");
-        console.log(goodOrBad)
+        let habitDocument = {};
         if (goodOrBad === "goodHabits") {
-            console.log(index)
-            console.log(this.props.goodHabits[index])
+            habitDocument = this.props.goodHabits[index]
+
         }
         else {
-            console.log(this.props.badHabits[index])
+            habitDocument = this.props.badHabits[index]
         }
         return (
             <View>
                 <Text>
-                    Hello! Bad Habits! we got Details
+                    {habitDocument.title}
                 </Text>
             </View>
         )

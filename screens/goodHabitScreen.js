@@ -32,21 +32,6 @@ class GoodHabitScreen extends React.Component {
         }
     }
 
-    componentDidMount() {
-        console.log("We got here")
-        this.props.dispatch(addHabit({title: "Hehehehehe"}))
-        this.props.dispatch(addHabit({title: "Hehehehehe"}))
-        this.props.dispatch(addHabit({title: "Hehehehehe"}))
-        this.props.dispatch(addHabit({title: "Hehehehehe"}))
-        this.props.dispatch(addHabit({title: "Hehehehehe"}))
-        this.props.dispatch(addHabit({title: "Hehehehehe"}))
-        this.props.dispatch(addHabit({title: "Hehehehehe"}))
-        this.props.dispatch(addHabit({title: "Hehehehehe"}))
-        this.props.dispatch(addHabit({title: "Hehehehehe"}))
-        this.props.dispatch(addHabit({title: "Hehehehehe"}))
-
-    }
-
     render() {
         console.log(this.props.goodHabits);
         //this.props.dispatch(addHabit({title: "Hehehehehe"}))
