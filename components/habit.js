@@ -28,19 +28,9 @@ const styles = StyleSheet.create({
     }
 })
 
-const myButton = (
-  <FontAwesome.Button
-      iconStyle={{marginTop: 3}}
-      padding={6}
-      name="chevron-right"
-      backgroundColor="transparent"
-      size={26}
-      onPress={()=> {console.log("Hello")}}>
-  </FontAwesome.Button>
-);
-
 
 export default class Habit extends React.Component {
+
 
     render() {
         return(
@@ -49,7 +39,17 @@ export default class Habit extends React.Component {
                 <Text style={styles.text}>
                     {this.props.title}
                 </Text>
-                {myButton}
+                <FontAwesome.Button
+                    iconStyle={{marginTop: 3}}
+                    padding={6}
+                    name="chevron-right"
+                    backgroundColor="transparent"
+                    size={26}
+                    onPress={() => this.props.navigation.navigate("HabitDetail", {
+                        habitIndex: this.props.index,
+                        goodOrbad: this.props.goodOrBad
+                    })}>
+                </FontAwesome.Button>
             </View>
         )
     }

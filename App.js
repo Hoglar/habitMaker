@@ -30,6 +30,7 @@ const MainScreenTabNavigator = createBottomTabNavigator({
 let RootNavigation = createAppContainer(MainScreenTabNavigator);
 
 export default class App extends React.Component {
+
     render() {
         return(
             <Provider store={store}>

@@ -44,7 +44,7 @@ class GoodHabitScreen extends React.Component {
         this.props.dispatch(addHabit({title: "Hehehehehe"}))
         this.props.dispatch(addHabit({title: "Hehehehehe"}))
         this.props.dispatch(addHabit({title: "Hehehehehe"}))
-        
+
     }
 
     render() {
@@ -55,7 +55,10 @@ class GoodHabitScreen extends React.Component {
             <ScrollView style={{flex: 1}}>
                 {this.props.goodHabits.map((habit, index) => (
                     <Habit  key={index}
-                            title={habit.title}/>
+                            index={index}
+                            goodOrBad="goodHabits"
+                            title={habit.title}
+                            navigation={this.props.navigation}/>
                 ))}
             </ScrollView>
         )
