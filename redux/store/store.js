@@ -9,7 +9,12 @@ const preLoadedState = {
         {title: "Clean everyday"}
     ],
     badHabits: [],
-    quote: {}
+    quote: {},
+    // Gets updated on loggin?
+    status: {
+        lastOnline: "Last time logged inn",
+        decayPoints: "currentDate - last online"
+    }
 };
 
 const store = createStore(reducer, preLoadedState);
