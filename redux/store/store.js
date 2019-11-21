@@ -10,7 +10,6 @@ const preLoadedState = {
     ],
     badHabits: [],
     quote: {},
-    // Gets updated on loggin?
     status: {
         lastOnline: "Last time logged inn",
         decayPoints: "currentDate - last online"
