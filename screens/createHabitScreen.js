@@ -1,33 +1,27 @@
 'use strict';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Picker } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Picker, Button } from 'react-native';
 import { connect } from 'react-redux';
 
 // How does a basic habbit look?
 
-const habit = {
-    // Title must be typed out
-    title: "Title of the habit",
-    // description may be optional? must be written.
-    description: "Explanation of the habit",
-    // needs to be drop down selector
-    updateFrequens: "1 - 7",
-    weekCounter: "Some counter to say how many times a week you can score points"
-    timeOfCreation: Date.now(),
-    lastUpdated: "datoen sist denne ble opdatert",
-    level: 1,
-    difficulity: "number that modify decay rate",
-    pointsNeededToLevel: "number",
-    points: ""
 
-}
 
 class CreateHabitScreen extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            updateFrequency: 1
+            habitTitle: "",
+            habitDescription: "",
+            updateFrequency: 1,
+            goodOrBad: this.props.navigation.getParam("goodOrBad", "err")
         }
+    }
+
+    _saveNewHabit() {
+        // This function needs to dispatch an action to save new habit.
+        // It ises info from state.
+        console.log(this.state.habitTitle, this.state.goodOrBad)
     }
     render() {
         return (
@@ -36,12 +30,14 @@ class CreateHabitScreen extends React.Component {
                     Hello! Bad Habits! we got ways to create habits
                 </Text>
                 <TextInput
-                    placeholder="Title">
+                    placeholder="Title"
+                    onChangeText={titleInput => this.setState({habitTitle: titleInput})}>
                 </TextInput>
                 <TextInput
                     style={{textAlignVertical: "top"}}
                     placeholder="Description"
                     multiline={true}
+                    onChangeText={descriptionInput=> this.setState({habitDescription: descriptionInput})}
                     >
                 </TextInput>
                 <Picker
@@ -60,6 +56,11 @@ class CreateHabitScreen extends React.Component {
                     <Picker.Item label="Once a week" value={7}/>
                     <Picker.Item label="Once a month" value={30}/>
                 </Picker>
+                <Button
+                    title="Create Habit"
+                    onPress={this._saveNewHabit.bind(this)}>
+
+                </Button>
 
             </View>
         )

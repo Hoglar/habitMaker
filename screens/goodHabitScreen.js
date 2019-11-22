@@ -22,7 +22,9 @@ class GoodHabitScreen extends React.Component {
             headerRight: () => (
                 <View style={{margin: 10}}>
                     <Button
-                        onPress={() => navigation.navigate('CreateHabit')}
+                        onPress={() => navigation.navigate('CreateHabit', {
+                            goodOrBad: "good"
+                        })}
                         title="Create"
                         color="green"
                     />
