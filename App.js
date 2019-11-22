@@ -8,7 +8,6 @@ import { Provider } from 'react-redux'
 import store from './redux/store/store.js';
 
 // Import actions
-import addHabit from './redux/actions/addHabit.js';
 import changeQuote from './redux/actions/changeQuote.js';
 
 // screens

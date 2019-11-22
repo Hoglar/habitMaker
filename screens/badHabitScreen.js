@@ -1,6 +1,7 @@
 'use strict';
 import React from 'react';
 import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
+import { connect } from 'react-redux';
 
 import store from '../redux/store/store.js';
 import changeQuote from '../redux/actions/changeQuote.js';
@@ -18,7 +19,9 @@ class BadHabitScreen extends React.Component {
             headerRight: () => (
                 <View style={{margin: 10}}>
                     <Button
-                        onPress={() => navigation.navigate('CreateHabit')}
+                        onPress={() => navigation.navigate('CreateHabit', {
+                            goodOrBad: "bad"
+                        })}
                         title="Create"
                         color="green"
                     />
@@ -30,13 +33,21 @@ class BadHabitScreen extends React.Component {
 
     render() {
         return (
-            <ScrollView>
-                {store.getState().goodHabits.map((habit) => {
-                    <Habit />
-                })}
+            <ScrollView style={{flex: 1}}>
+                {this.props.badHabits.map((habit, index) => (
+                    <Habit  key={index}
+                            index={index}
+                            goodOrBad="badHabits"
+                            title={habit.title}
+                            navigation={this.props.navigation}/>
+                ))}
             </ScrollView>
         )
     }
 }
 
-export default BadHabitScreen;
+
+const mapStateToProps = state => ({
+    badHabits: state.badHabits
+})
+export default connect(mapStateToProps)(BadHabitScreen);

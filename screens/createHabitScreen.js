@@ -3,6 +3,9 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, Picker, Button } from 'react-native';
 import { connect } from 'react-redux';
 
+// Import actions
+import saveNewGoodHabit from '../redux/actions/saveNewGoodHabit.js';
+import saveNewBadHabit from '../redux/actions/saveNewBadHabit.js';
 // How does a basic habbit look?
 
 
@@ -11,8 +14,8 @@ class CreateHabitScreen extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            habitTitle: "",
-            habitDescription: "",
+            title: "",
+            description: "",
             updateFrequency: 1,
             goodOrBad: this.props.navigation.getParam("goodOrBad", "err")
         }
@@ -21,7 +24,12 @@ class CreateHabitScreen extends React.Component {
     _saveNewHabit() {
         // This function needs to dispatch an action to save new habit.
         // It ises info from state.
+
         console.log(this.state.habitTitle, this.state.goodOrBad)
+        if (this.state.goodOrBad === "good") {
+            this.props.dispatch(saveNewBadHabit(this.state))
+        }
+
     }
     render() {
         return (
@@ -31,13 +39,13 @@ class CreateHabitScreen extends React.Component {
                 </Text>
                 <TextInput
                     placeholder="Title"
-                    onChangeText={titleInput => this.setState({habitTitle: titleInput})}>
+                    onChangeText={titleInput => this.setState({title: titleInput})}>
                 </TextInput>
                 <TextInput
                     style={{textAlignVertical: "top"}}
                     placeholder="Description"
                     multiline={true}
-                    onChangeText={descriptionInput=> this.setState({habitDescription: descriptionInput})}
+                    onChangeText={descriptionInput=> this.setState({description: descriptionInput})}
                     >
                 </TextInput>
                 <Picker

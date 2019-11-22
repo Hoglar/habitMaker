@@ -10,7 +10,6 @@ import CustomHeader from '../components/customHeader.js';
 import Habit from '../components/habit.js';
 
 // Import actions
-import addHabit from '../redux/actions/addHabit.js';
 
 class GoodHabitScreen extends React.Component {
     constructor(props) {

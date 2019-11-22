@@ -1,11 +1,21 @@
 'use strict';
 import {combineReducers} from 'redux';
 // actionTypes
-import {ADD_GOOD_HABIT, CHANGE_QUOTE, UPDATE_STATUS} from '../actions/actionTypes.js';
+import {CHANGE_QUOTE,
+        UPDATE_STATUS,
+        SAVE_NEW_GOOD_HABIT,
+        SAVE_NEW_BAD_HABIT} from '../actions/actionTypes.js';
 
 
-const habitReducer = (state = [], action) => {
-    if ( action.type === ADD_GOOD_HABIT ) {
+const goodHabitReducer = (state = [], action) => {
+    if ( action.type === SAVE_NEW_GOOD_HABIT ) {
+        return [...state, action.payload]
+    }
+    return state;
+}
+
+const badHabitReducer = (state = [], action) => {
+    if ( action.type === SAVE_NEW_BAD_HABIT ) {
         return [...state, action.payload]
     }
     return state;
@@ -28,8 +38,8 @@ const updateStatusReducer = (state = {}, action) => {
 }
 
 const reducer = combineReducers({
-    goodHabits: habitReducer,
-    badHabits: habitReducer,
+    goodHabits: goodHabitReducer,
+    badHabits: badHabitReducer,
     quote: changeQuoteReducer,
     status: updateStatusReducer
 })
