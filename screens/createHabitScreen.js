@@ -27,7 +27,7 @@ class CreateHabitScreen extends React.Component {
 
         console.log(this.state.habitTitle, this.state.goodOrBad)
         if (this.state.goodOrBad === "good") {
-            this.props.dispatch(saveNewBadHabit(this.state))
+            this.props.dispatch(saveNewGoodHabit(this.state))
         }
 
     }
@@ -62,7 +62,6 @@ class CreateHabitScreen extends React.Component {
                     <Picker.Item label="Five times a week" value={5} />
                     <Picker.Item label="Six times a week" value={6} />
                     <Picker.Item label="Once a week" value={7}/>
-                    <Picker.Item label="Once a month" value={30}/>
                 </Picker>
                 <Button
                     title="Create Habit"
