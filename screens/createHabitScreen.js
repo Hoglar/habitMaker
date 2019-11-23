@@ -29,6 +29,9 @@ class CreateHabitScreen extends React.Component {
         if (this.state.goodOrBad === "good") {
             this.props.dispatch(saveNewGoodHabit(this.state))
         }
+        if ( this.state.goodOrBad === "bad") {
+            this.props.dispatch(saveNewBadHabit(this.state))
+        }
 
     }
     render() {
