@@ -13,9 +13,11 @@ class CustomHeader extends React.Component {
                 <Text style={{
                     fontSize: 17,
                     fontWeight: "300",
-                    margin: 10,
+                    marginLeft: 20,
                     marginRight: 50,
-                    color: "#3A3F3D"
+                    color: "#3A3F3D",
+                    lineHeight: 16,
+                    letterSpacing: 3
                 }}>
                     {this.props.quote.text + "."}
                 </Text>
