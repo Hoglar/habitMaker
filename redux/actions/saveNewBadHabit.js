@@ -7,6 +7,7 @@ export default function addHabit(payload) {
         type: SAVE_NEW_BAD_HABIT,
         payload: {
             ...payload
+
         }
     }
 }

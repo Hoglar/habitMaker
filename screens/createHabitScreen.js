@@ -16,8 +16,20 @@ class CreateHabitScreen extends React.Component {
         this.state = {
             title: "",
             description: "",
-            updateFrequency: 1,
-            goodOrBad: this.props.navigation.getParam("goodOrBad", "err")
+            // Week counter determine how many time a week we can update our
+            // habit object. It will reset on sundays. or something like that.
+
+            // A habit can be updated everyday, but only once.
+            weekCounterLimit: 7,
+            weekCounter: 7,
+            goodOrBad: this.props.navigation.getParam("goodOrBad", "err"),
+            timeOfCreation: Date.now(),
+            // last updated is getting updated on every update og the data.
+            lastUpdated: Date.now(),
+            level: 1,
+            difficulity: 0.5,
+            pointsNeededToLevel: 100000,
+            points: 0
         }
     }
 
@@ -25,20 +37,27 @@ class CreateHabitScreen extends React.Component {
         // This function needs to dispatch an action to save new habit.
         // It ises info from state.
 
-        console.log(this.state.habitTitle, this.state.goodOrBad)
-        if (this.state.goodOrBad === "good") {
-            this.props.dispatch(saveNewGoodHabit(this.state))
+        if(this.state.title === "") {
+            alert("Input title!");
+        } else {
+            if (this.state.goodOrBad === "good") {
+                this.props.dispatch(saveNewGoodHabit(this.state))
+                this.props.navigation.goBack();
+            }
+            if ( this.state.goodOrBad === "bad") {
+                this.props.dispatch(saveNewBadHabit(this.state))
+                this.props.navigation.goBack();
+            }
         }
-        if ( this.state.goodOrBad === "bad") {
-            this.props.dispatch(saveNewBadHabit(this.state))
-        }
+
+
 
     }
     render() {
         return (
             <View>
                 <Text>
-                    Hello! Bad Habits! we got ways to create habits
+                    Habits! we got ways to create habits
                 </Text>
                 <TextInput
                     placeholder="Title"
@@ -52,19 +71,18 @@ class CreateHabitScreen extends React.Component {
                     >
                 </TextInput>
                 <Picker
-                    selectedValue={this.state.updateFrequency}
+                    selectedValue={this.state.weekCounterLimit}
                     style={{height: 50, width: 200}}
                     onValueChange={(itemValue, itemIndex) =>
-                        this.setState({updateFrequency: itemValue})
+                        this.setState({weekCounterLimit: itemValue, weekCounter: itemValue})
                     }>
-                    <Picker.Item label="Every day" value={1} />
-                    <Picker.Item label="Every second day" value={2} />
+                    <Picker.Item label="Every day" value={7} />
                     <Picker.Item label="Two times a week" value={2} />
                     <Picker.Item label="Three times a week" value={3} />
                     <Picker.Item label="Four times a week" value={4} />
                     <Picker.Item label="Five times a week" value={5} />
                     <Picker.Item label="Six times a week" value={6} />
-                    <Picker.Item label="Once a week" value={7}/>
+                    <Picker.Item label="Once a week" value={1}/>
                 </Picker>
                 <Button
                     title="Create Habit"
