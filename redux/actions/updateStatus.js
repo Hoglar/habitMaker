@@ -3,7 +3,6 @@ import {UPDATE_STATUS} from './actionTypes.js';
 
 export default function updateStatus() {
     return {
-        type: UPDATE_STATUS,
-        payload: {}
+        type: UPDATE_STATUS
     }
 }

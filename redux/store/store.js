@@ -11,7 +11,7 @@ const preLoadedState = {
     badHabits: [],
     quote: {},
     status: {
-        lastOnline: "Last time logged inn",
+        lastOnline: "",
         decayPoints: "currentDate - last online"
     }
 };
