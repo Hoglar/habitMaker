@@ -9,6 +9,7 @@ import {AppLoading} from 'expo';
 // importing redux store
 import store from './redux/store/store.js';
 
+import saveStateToStorage from './functions/saveStateToStorage.js';
 // Import actions
 import changeQuote from './redux/actions/changeQuote.js';
 import updateStatus from './redux/actions/updateStatus.js';
@@ -33,6 +34,7 @@ const MainScreenTabNavigator = createBottomTabNavigator({
 let RootNavigation = createAppContainer(MainScreenTabNavigator);
 
 
+
 export default class App extends React.Component {
 
     // Lets create loading screen!
@@ -45,6 +47,7 @@ export default class App extends React.Component {
 
 
     async _getTheAppReadyAsync() {
+
         // Hva trenger vi og gjøre. Vi må på en måte skaffe info
         // if it is first time we log inn, we should set status to something.
         if(store.getState().status.lastOnline === "") {
@@ -53,10 +56,9 @@ export default class App extends React.Component {
             store.dispatch(updateStatus());
         }
         // Så må vi update status, så opdatere state.
+        store.subscribe(saveStateToStorage);
 
     }
-
-
 
     render() {
 
@@ -69,7 +71,7 @@ export default class App extends React.Component {
                 />
             )
         }
-
+        // We save down here i guess
         return(
             <Provider store={store}>
                 <RootNavigation />
