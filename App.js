@@ -4,12 +4,15 @@ import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Provider } from 'react-redux'
 import {AppLoading} from 'expo';
+import { createStore } from "redux";
 
+// importing reducer
+import rootReducer from './redux/reducers/rootReducer.js';
 
-// importing redux store
-import store from './redux/store/store.js';
-
+// Importing functions
 import saveStateToStorage from './functions/saveStateToStorage.js';
+import loadStateFromStorage from './functions/loadStateFromStorage.js';
+
 // Import actions
 import changeQuote from './redux/actions/changeQuote.js';
 import updateStatus from './redux/actions/updateStatus.js';
@@ -33,7 +36,7 @@ const MainScreenTabNavigator = createBottomTabNavigator({
 
 let RootNavigation = createAppContainer(MainScreenTabNavigator);
 
-
+let store;
 
 export default class App extends React.Component {
 
@@ -45,18 +48,33 @@ export default class App extends React.Component {
         };
     }
 
-
     async _getTheAppReadyAsync() {
+        // We create the app in here, that should be the first thing we do.
+        // First we load
+        try {
+            let preLoadedStore = await loadStateFromStorage();
+            if (preLoadedStore === null) {
+                // We create store from scratch
+                preLoadedStore = {
+                    goodHabits: [],
+                    badHabits: [],
+                    quote: {},
+                    status: {
+                        lastOnline: Date.now(),
+                        decayPoints: 0
+                    }
+                };
+            }
+            // nå har vi state, la oss se hva det ble
+            store = createStore(rootReducer, preLoadedStore);
 
-        // Hva trenger vi og gjøre. Vi må på en måte skaffe info
-        // if it is first time we log inn, we should set status to something.
-        if(store.getState().status.lastOnline === "") {
-            store.dispatch(firstLoginStatusUpdate());
-        } else {
-            store.dispatch(updateStatus());
+        } catch(error) {
+            console.error(error)
         }
+
         // Så må vi update status, så opdatere state.
-        store.subscribe(saveStateToStorage);
+        store.dispatch(changeQuote())
+        //store.subscribe(saveStateToStorage);
 
     }
 
@@ -71,7 +89,9 @@ export default class App extends React.Component {
                 />
             )
         }
+
         // We save down here i guess
+
         return(
             <Provider store={store}>
                 <RootNavigation />

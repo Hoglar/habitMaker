@@ -3,14 +3,12 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 
-import store from '../redux/store/store.js';
 import changeQuote from '../redux/actions/changeQuote.js';
 
 // Importing components
 import CustomHeader from '../components/customHeader.js';
 import Habit from '../components/habit.js';
 
-store.dispatch(changeQuote());
 
 class BadHabitScreen extends React.Component {
 

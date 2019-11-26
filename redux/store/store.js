@@ -16,5 +16,3 @@ const preLoadedState = {
 };
 
 const store = createStore(reducer, preLoadedState);
-
-export default store;
