@@ -67,7 +67,7 @@ export default class App extends React.Component {
             }
             // nå har vi state, la oss se hva det ble
             store = createStore(rootReducer, preLoadedStore);
-
+            console.log(store.getState());
         } catch(error) {
             console.error(error)
         }
@@ -78,7 +78,7 @@ export default class App extends React.Component {
         if (!this.state.isReady) {
             return (
                 <AppLoading
-                    startAsync={this._getTheAppReadyAsync}
+                    startAsync={this._getTheAppReadyAsync.bind(this)}
                     onFinish={() => this.setState({isReady: true})}
                     onError={console.warn}
                 />
@@ -87,6 +87,10 @@ export default class App extends React.Component {
 
         // We save down here i guess
         store.dispatch(changeQuote())
+        store.subscribe(async () => {
+            await saveStateToStorage(store.getState())
+            console.log("expo er så klikk")
+        })
         return(
             <Provider store={store}>
                 <RootNavigation />

@@ -20,7 +20,6 @@ const goodHabitReducer = (state = [], action) => {
         newHabitObject[action.habitIndex].lastUpdated = Date.now();
         newHabitObject[action.habitIndex].weekCounter -= 1;
 
-        console.log(newHabitObject)
         return newHabitObject;
     }
     return state;
@@ -36,7 +35,6 @@ const badHabitReducer = (state = [], action) => {
         newHabitObject[action.habitIndex].lastUpdated = Date.now();
         newHabitObject[action.habitIndex].weekCounter -= 1;
 
-        console.log(newHabitObject)
         return newHabitObject;
     }
 
