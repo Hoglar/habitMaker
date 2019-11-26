@@ -6,13 +6,12 @@ import reducer from '../reducers/rootReducer.js';
 
 const preLoadedState = {
     goodHabits: [
-        {title: "Clean everyday"}
     ],
     badHabits: [],
     quote: {},
     status: {
         lastOnline: "",
-        decayPoints: "currentDate - last online"
+        decayPoints: 0
     }
 };
 

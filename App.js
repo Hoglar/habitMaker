@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Provider } from 'react-redux'
 import {AppLoading} from 'expo';
 
+
 // importing redux store
 import store from './redux/store/store.js';
 
@@ -30,6 +31,7 @@ const MainScreenTabNavigator = createBottomTabNavigator({
 })
 
 let RootNavigation = createAppContainer(MainScreenTabNavigator);
+
 
 export default class App extends React.Component {
 

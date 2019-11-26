@@ -2,8 +2,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
-// access to store?
-// Nah
+import saveStateToStorage from '../functions/saveStateToStorage.js';
+
 import completeDailyGoodHabit from '../redux/actions/completeDailyGoodHabit.js';
 import completeDailyBadHabit from '../redux/actions/completeDailyBadHabit.js';
 // Ok, lets make an Habit.
@@ -33,8 +33,9 @@ const styles = StyleSheet.create({
 
 export default class Habit extends React.Component {
 
-    _completeDailyHabit() {
-        this.props.dispatch(completeDailyGoodHabit(this.props.index))
+    async _completeDailyHabit() {
+        await this.props.dispatch(completeDailyGoodHabit(this.props.index))
+        await saveStateToStorage()
         // When we compleet we dispatch!
         // And what needs to be done then!
             // We need to
