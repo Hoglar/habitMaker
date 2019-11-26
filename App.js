@@ -71,11 +71,6 @@ export default class App extends React.Component {
         } catch(error) {
             console.error(error)
         }
-
-        // Så må vi update status, så opdatere state.
-        store.dispatch(changeQuote())
-        //store.subscribe(saveStateToStorage);
-
     }
 
     render() {
@@ -91,7 +86,7 @@ export default class App extends React.Component {
         }
 
         // We save down here i guess
-
+        store.dispatch(changeQuote())
         return(
             <Provider store={store}>
                 <RootNavigation />

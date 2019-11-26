@@ -34,8 +34,7 @@ const styles = StyleSheet.create({
 export default class Habit extends React.Component {
 
     async _completeDailyHabit() {
-        await this.props.dispatch(completeDailyGoodHabit(this.props.index))
-        await saveStateToStorage()
+        await this.props.dispatch(completeDailyGoodHabit(this.props.index));
         // When we compleet we dispatch!
         // And what needs to be done then!
             // We need to
