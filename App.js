@@ -16,7 +16,6 @@ import loadStateFromStorage from './functions/loadStateFromStorage.js';
 // Import actions
 import changeQuote from './redux/actions/changeQuote.js';
 import updateStatus from './redux/actions/updateStatus.js';
-import firstLoginStatusUpdate from './redux/actions/firstLoginStatusUpdate.js';
 
 // screens
 import GoodHabitStack from './screens/goodHabitStack.js';
@@ -65,9 +64,16 @@ export default class App extends React.Component {
                     }
                 };
             }
-            // nå har vi state, la oss se hva det ble
             store = createStore(rootReducer, preLoadedStore);
-            console.log(store.getState());
+
+            // Store is created, now we need to update status.
+            store.dispatch(updateStatus());
+            // And we are ready!
+            // Now we must degrade points in the habits.
+
+            // Need to build action for this.
+            
+
         } catch(error) {
             console.error(error)
         }
