@@ -16,7 +16,7 @@ import loadStateFromStorage from './functions/loadStateFromStorage.js';
 // Import actions
 import changeQuote from './redux/actions/changeQuote.js';
 import updateStatus from './redux/actions/updateStatus.js';
-
+import decayHabitpointsOnStart from './redux/actions/decayHabitpointsOnStart.js';
 // screens
 import GoodHabitStack from './screens/goodHabitStack.js';
 import BadHabitStack from './screens/badHabitStack.js';
@@ -72,7 +72,7 @@ export default class App extends React.Component {
             // Now we must degrade points in the habits.
 
             // Need to build action for this.
-            
+            store.dispatch(decayHabitpointsOnStart(store.getState().status.decayPoints));
 
         } catch(error) {
             console.error(error)

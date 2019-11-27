@@ -6,7 +6,8 @@ import {CHANGE_QUOTE,
         SAVE_NEW_GOOD_HABIT,
         SAVE_NEW_BAD_HABIT,
         COMPLETE_DAILY_BAD_HABIT,
-        COMPLETE_DAILY_GOOD_HABIT} from '../actions/actionTypes.js';
+        COMPLETE_DAILY_GOOD_HABIT,
+        DECAY_HABITPOINTS_ON_START} from '../actions/actionTypes.js';
 
 
 const goodHabitReducer = (state = [], action) => {
@@ -21,6 +22,23 @@ const goodHabitReducer = (state = [], action) => {
 
         return newHabitObject;
     }
+
+    if (action.type === DECAY_HABITPOINTS_ON_START) {
+
+        let newHabitObject = [...state];
+        for (i = 0; i < newHabitObject.length; i++) {
+            if ((newHabitObject.points - action.decayPoints) <= 0 ) {
+                console.log("habit is 0");
+                newHabitObject.points = 0;
+            } else {
+                console.log("Decaying habit", action.decayPoints);
+                newHabitObject.points -= action.decayPoints;
+            }
+        }
+        return newHabitObject;
+
+    }
+
     return state;
 }
 
@@ -35,6 +53,20 @@ const badHabitReducer = (state = [], action) => {
         newHabitObject[action.habitIndex].weekCounter -= 1;
 
         return newHabitObject;
+    }
+
+    if (action.type === DECAY_HABITPOINTS_ON_START) {
+
+        let newHabitObject = [...state];
+        for (i = 0; i < newHabitObject.length; i++) {
+            if ((newHabitObject.points - action.decayPoints) <= 0 ) {
+                newHabitObject.points = 0;
+            } else {
+                newHabitObject.points -= action.decayPoints;
+            }
+        }
+        return newHabitObject;
+
     }
 
     return state;
