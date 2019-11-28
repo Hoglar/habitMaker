@@ -72,6 +72,11 @@ export default class App extends React.Component {
             // Now we must degrade points in the habits.
 
             // Need to build action for this.
+            store.dispatch(changeQuote())
+            store.subscribe(async () => {
+                await saveStateToStorage(store.getState())
+                console.log("expo er så klikk")
+            })
             store.dispatch(decayHabitpointsOnStart(store.getState().status.decayPoints));
 
         } catch(error) {
@@ -92,11 +97,8 @@ export default class App extends React.Component {
         }
 
         // We save down here i guess
-        store.dispatch(changeQuote())
-        store.subscribe(async () => {
-            await saveStateToStorage(store.getState())
-            console.log("expo er så klikk")
-        })
+
+
         return(
             <Provider store={store}>
                 <RootNavigation />

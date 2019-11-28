@@ -16,7 +16,8 @@ const goodHabitReducer = (state = [], action) => {
     }
     if ( action.type === COMPLETE_DAILY_GOOD_HABIT ) {
         let newHabitObject = [...state];
-        newHabitObject[action.habitIndex].points += 1000 ;
+        //Gets points as how many seconds there is in a day
+        newHabitObject[action.habitIndex].points += 86400 ;
         newHabitObject[action.habitIndex].lastUpdated = Date.now();
         newHabitObject[action.habitIndex].weekCounter -= 1;
 
@@ -27,12 +28,12 @@ const goodHabitReducer = (state = [], action) => {
 
         let newHabitObject = [...state];
         for (i = 0; i < newHabitObject.length; i++) {
-            if ((newHabitObject.points - action.decayPoints) <= 0 ) {
-                console.log("habit is 0");
-                newHabitObject.points = 0;
+            let modifiedDecayPoints = Math.floor(action.decayPoints * newHabitObject[i].difficulity)
+            if ((newHabitObject[i].points - modifiedDecayPoints) <= 0 ) {
+                newHabitObject[i].points = 0;
             } else {
-                console.log("Decaying habit", action.decayPoints);
-                newHabitObject.points -= action.decayPoints;
+
+                newHabitObject[i].points -= modifiedDecayPoints;
             }
         }
         return newHabitObject;
@@ -48,7 +49,7 @@ const badHabitReducer = (state = [], action) => {
     }
     if ( action.type === COMPLETE_DAILY_BAD_HABIT ) {
         let newHabitObject = [...state];
-        newHabitObject[action.habitIndex].points += 1000 ;
+        newHabitObject[action.habitIndex].points += 86400 ;
         newHabitObject[action.habitIndex].lastUpdated = Date.now();
         newHabitObject[action.habitIndex].weekCounter -= 1;
 
@@ -59,10 +60,12 @@ const badHabitReducer = (state = [], action) => {
 
         let newHabitObject = [...state];
         for (i = 0; i < newHabitObject.length; i++) {
-            if ((newHabitObject.points - action.decayPoints) <= 0 ) {
-                newHabitObject.points = 0;
+            let modifiedDecayPoints = Math.floor(action.decayPoints * newHabitObject[i].difficulity)
+            if ((newHabitObject[i].points - modifiedDecayPoints) <= 0 ) {
+                newHabitObject[i].points = 0;
             } else {
-                newHabitObject.points -= action.decayPoints;
+
+                newHabitObject[i].points -= modifiedDecayPoints;
             }
         }
         return newHabitObject;
@@ -83,7 +86,8 @@ const changeQuoteReducer = (state = {}, action) => {
 const updateStatusReducer = (state = {}, action) => {
     if ( action.type === UPDATE_STATUS ) {
         return {
-            decayPoints: Date.now() - state.lastOnline,
+            // This will ensure that we decay about the same rate as seconds in a day
+            decayPoints: Math.floor((Date.now() - state.lastOnline) / 1000),
             lastOnline: Date.now()
         }
     }
