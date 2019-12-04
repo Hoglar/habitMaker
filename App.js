@@ -12,6 +12,8 @@ import rootReducer from './redux/reducers/rootReducer.js';
 // Importing functions
 import saveStateToStorage from './functions/saveStateToStorage.js';
 import loadStateFromStorage from './functions/loadStateFromStorage.js';
+import getNextMonday from './functions/getNextMonday.js';
+import getTodayDate from './functions/getTodayDate.js';
 
 // Import actions
 import changeQuote from './redux/actions/changeQuote.js';
@@ -54,13 +56,15 @@ export default class App extends React.Component {
             let preLoadedStore = await loadStateFromStorage();
             if (preLoadedStore === null) {
                 // We create store from scratch
+
                 preLoadedStore = {
                     goodHabits: [],
                     badHabits: [],
                     quote: {},
                     status: {
                         lastOnline: Date.now(),
-                        decayPoints: 0
+                        decayPoints: 0,
+                        nextWeeklyCounterReset: getNextMonday()
                     }
                 };
             }
@@ -78,7 +82,13 @@ export default class App extends React.Component {
                 console.log("expo er så klikk")
             })
             store.dispatch(decayHabitpointsOnStart(store.getState().status.decayPoints));
+            // We check if today is the next monday where we get more pints!
 
+            console.log("next reset is ", store.getState().status.nextWeeklyCounterReset);
+            console.log("Today is", getTodayDate())
+            if(store.getState().status.nextWeeklyCounterReset <= getTodayDate()) {
+                console.log("Were over it");
+            }
         } catch(error) {
             console.error(error)
         }

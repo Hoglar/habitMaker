@@ -19,6 +19,7 @@ const goodHabitReducer = (state = [], action) => {
 
         let today = getTodayDate()
 
+        // Next we must work on the weekly cap
         if (newHabitObject[action.habitIndex].lastUpdated !== today) {
             //Gets points as how many seconds there is in a day
             newHabitObject[action.habitIndex].points += 86400 ;
@@ -101,7 +102,8 @@ const updateStatusReducer = (state = {}, action) => {
         return {
             // This will ensure that we decay about the same rate as seconds in a day
             decayPoints: Math.floor((Date.now() - state.lastOnline) / 1000),
-            lastOnline: Date.now()
+            lastOnline: Date.now(),
+            nextWeeklyCounterReset: state.nextWeeklyCounterReset
         }
     }
 

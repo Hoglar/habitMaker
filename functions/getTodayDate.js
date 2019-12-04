@@ -1,10 +1,12 @@
 'use strict';
 
 function getTodayDate() {
-    let todayDate = new Date().getDate()
-    let todayMonth = new Date().getMonth()
-    let todayYear = new Date().getFullYear()
-    let today = "" + todayDate + todayMonth + todayYear;
+
+    let date = new Date();
+    let todayDate = date.getDate()
+    let todayMonth = date.getMonth()
+    let todayYear = date.getFullYear()
+    let today = "" + todayYear + todayMonth + todayDate;
 
     return today;
 }
