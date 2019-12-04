@@ -15,11 +15,20 @@ const goodHabitReducer = (state = [], action) => {
         return [...state, action.payload]
     }
     if ( action.type === COMPLETE_DAILY_GOOD_HABIT ) {
+
         let newHabitObject = [...state];
-        //Gets points as how many seconds there is in a day
-        newHabitObject[action.habitIndex].points += 86400 ;
-        newHabitObject[action.habitIndex].lastUpdated = Date.now();
-        newHabitObject[action.habitIndex].weekCounter -= 1;
+        let todayDate = new Date().getDate()
+        let todayMonth = new Date().getMonth()
+        let todayYear = new Date().getFullYear()
+        let today = "" + todayDate + todayMonth + todayYear;
+
+        if (newHabitObject[action.habitIndex].lastUpdated !== today) {
+            //Gets points as how many seconds there is in a day
+            newHabitObject[action.habitIndex].points += 86400 ;
+
+            newHabitObject[action.habitIndex].lastUpdated = today;
+            newHabitObject[action.habitIndex].weekCounter -= 1;
+        }
 
         return newHabitObject;
     }
@@ -49,9 +58,18 @@ const badHabitReducer = (state = [], action) => {
     }
     if ( action.type === COMPLETE_DAILY_BAD_HABIT ) {
         let newHabitObject = [...state];
-        newHabitObject[action.habitIndex].points += 86400 ;
-        newHabitObject[action.habitIndex].lastUpdated = Date.now();
-        newHabitObject[action.habitIndex].weekCounter -= 1;
+        let todayDate = new Date().getDate()
+        let todayMonth = new Date().getMonth()
+        let todayYear = new Date().getFullYear()
+        let today = "" + todayDate + todayMonth + todayYear;
+
+        if (newHabitObject[action.habitIndex].lastUpdated !== today) {
+            //Gets points as how many seconds there is in a day
+            newHabitObject[action.habitIndex].points += 86400 ;
+
+            newHabitObject[action.habitIndex].lastUpdated = today;
+            newHabitObject[action.habitIndex].weekCounter -= 1;
+        }
 
         return newHabitObject;
     }
