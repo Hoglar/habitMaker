@@ -1,5 +1,6 @@
 'use strict';
 import {combineReducers} from 'redux';
+import getTodayDate from '../../functions/getTodayDate.js';
 // actionTypes
 import {CHANGE_QUOTE,
         UPDATE_STATUS,
@@ -16,11 +17,7 @@ const goodHabitReducer = (state = [], action) => {
     }
     if ( action.type === COMPLETE_DAILY_GOOD_HABIT ) {
 
-        let newHabitObject = [...state];
-        let todayDate = new Date().getDate()
-        let todayMonth = new Date().getMonth()
-        let todayYear = new Date().getFullYear()
-        let today = "" + todayDate + todayMonth + todayYear;
+        let today = getTodayDate()
 
         if (newHabitObject[action.habitIndex].lastUpdated !== today) {
             //Gets points as how many seconds there is in a day
@@ -58,10 +55,8 @@ const badHabitReducer = (state = [], action) => {
     }
     if ( action.type === COMPLETE_DAILY_BAD_HABIT ) {
         let newHabitObject = [...state];
-        let todayDate = new Date().getDate()
-        let todayMonth = new Date().getMonth()
-        let todayYear = new Date().getFullYear()
-        let today = "" + todayDate + todayMonth + todayYear;
+
+        let today = getTodayDate();
 
         if (newHabitObject[action.habitIndex].lastUpdated !== today) {
             //Gets points as how many seconds there is in a day

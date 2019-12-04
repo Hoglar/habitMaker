@@ -42,10 +42,8 @@ class GoodHabitScreen extends React.Component {
                     <Habit  key={index}
                             index={index}
                             goodOrBad="goodHabits"
-                            title={habit.title}
+                            habit={habit}
                             navigation={this.props.navigation}
-                            points={habit.points}
-                            pointsNeededToLevel={habit.pointsNeededToLevel}
                             dispatch={this.props.dispatch}/>
                 ))}
             </ScrollView>

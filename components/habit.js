@@ -6,6 +6,7 @@ import saveStateToStorage from '../functions/saveStateToStorage.js';
 
 import completeDailyGoodHabit from '../redux/actions/completeDailyGoodHabit.js';
 import completeDailyBadHabit from '../redux/actions/completeDailyBadHabit.js';
+import getTodayDate from '../functions/getTodayDate.js';
 // Ok, lets make an Habit.
 // this component needs some props, dont know if this is bad practise while
 // using redux. But anyway.
@@ -30,6 +31,9 @@ const styles = StyleSheet.create({
     }
 })
 
+let today = getTodayDate();
+
+
 
 export default class Habit extends React.Component {
 
@@ -43,12 +47,15 @@ export default class Habit extends React.Component {
     render() {
         return(
             <View style={styles.box}>
-                <Button
-                    title="Complete"
-                    onPress={this._completeDailyHabit.bind(this)}></Button>
+                {this.props.habit.lastUpdated !== today ?
+                    <Button
+                        title="Complete"
+                        onPress={this._completeDailyHabit.bind(this)}></Button>
+
+                        : null }
                 <Text style={styles.text}>
-                    {this.props.title + "  "}
-                    {this.props.points}
+                    {this.props.habit.title + "  "}
+                    {this.props.habit.points}
                 </Text>
 
                 <FontAwesome.Button
