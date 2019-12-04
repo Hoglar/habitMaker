@@ -79,8 +79,6 @@ export default class App extends React.Component {
             })
             store.dispatch(decayHabitpointsOnStart(store.getState().status.decayPoints));
 
-            setTimeout(() => {}, 1000)
-
         } catch(error) {
             console.error(error)
         }
