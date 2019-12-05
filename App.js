@@ -84,8 +84,6 @@ export default class App extends React.Component {
             })
             store.dispatch(decayHabitpointsOnStart(store.getState().status.decayPoints));
             // We check if today is the next monday where we get more pints!
-
-
             if(store.getState().status.nextWeeklyCounterReset <= getTodayDate()) {
                 store.dispatch(resetWeeklyCounter());
             }
