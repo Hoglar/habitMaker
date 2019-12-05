@@ -1,7 +1,16 @@
 'use strict';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
+
+// The plan for details.
+// We make a title at the top.
+// Then we have the description. This should be fixed size for the looks.
+// under we got some stats, xp circle, weekly count, level
+// Under this we got a delete button
+
+// If im to list the level up notes, this goes under here.
+
 
 class HabitDetailScreen extends React.Component {
     render() {
@@ -25,9 +34,15 @@ class HabitDetailScreen extends React.Component {
                 <Text>
                     {habitDocument.description}
                 </Text>
+                <Text>XP</Text>
                 <Text>
                     {habitDocument.weekCounter}
                 </Text>
+                <Text>Level</Text>
+                <Button
+                    title="Delete">
+                </Button>
+
             </View>
         )
     }

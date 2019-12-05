@@ -37,7 +37,12 @@ export default class Habit extends React.Component {
 
     async _completeDailyHabit() {
         if(this.props.habit.lastUpdated !== today && this.props.habit.weekCounter !== 0) {
-            await this.props.dispatch(completeDailyGoodHabit(this.props.index));
+            if(this.props.goodOrBad === "goodHabits") {
+                await this.props.dispatch(completeDailyGoodHabit(this.props.index));
+            } else {
+                await this.props.dispatch(completeDailyBadHabit(this.props.index));
+            }
+
         }
     }
 

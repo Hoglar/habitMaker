@@ -23,7 +23,7 @@ const goodHabitReducer = (state = [], action) => {
 
             newHabitObject[i] = {
                 ...newHabitObject[i],
-                points: newHabitObject[i] + 172800,
+                points: newHabitObject[i].points + 172800,
                 lastUpdated: getTodayDate(),
                 weekCounter: newHabitObject[i] - 1
             }
@@ -66,10 +66,10 @@ const badHabitReducer = (state = [], action) => {
         case COMPLETE_DAILY_BAD_HABIT: {
             let newHabitObject = [...state];
             let i = action.habitIndex
-
+            console.log("Are we getting hererererer")
             newHabitObject[i] = {
                 ...newHabitObject[i],
-                points: newHabitObject[i] + 172800,
+                points: newHabitObject[i].points + 172800,
                 lastUpdated: getTodayDate(),
                 weekCounter: newHabitObject[i] - 1
             }
