@@ -8,7 +8,8 @@ import {CHANGE_QUOTE,
         SAVE_NEW_BAD_HABIT,
         COMPLETE_DAILY_BAD_HABIT,
         COMPLETE_DAILY_GOOD_HABIT,
-        DECAY_HABITPOINTS_ON_START} from '../actions/actionTypes.js';
+        DECAY_HABITPOINTS_ON_START,
+        RESET_WEEKLY_COUNTER} from '../actions/actionTypes.js';
 
 
 const goodHabitReducer = (state = [], action) => {
@@ -16,17 +17,12 @@ const goodHabitReducer = (state = [], action) => {
         return [...state, action.payload]
     }
     if ( action.type === COMPLETE_DAILY_GOOD_HABIT ) {
+        let newHabitObject = [...state];
+        let today = getTodayDate();
 
-        let today = getTodayDate()
-
-        // Next we must work on the weekly cap
-        if (newHabitObject[action.habitIndex].lastUpdated !== today) {
-            //Gets points as how many seconds there is in a day
-            newHabitObject[action.habitIndex].points += 86400 ;
-
-            newHabitObject[action.habitIndex].lastUpdated = today;
-            newHabitObject[action.habitIndex].weekCounter -= 1;
-        }
+        newHabitObject[action.habitIndex].points += 172800 ;
+        newHabitObject[action.habitIndex].lastUpdated = today;
+        newHabitObject[action.habitIndex].weekCounter -= 1;
 
         return newHabitObject;
     }
@@ -43,6 +39,18 @@ const goodHabitReducer = (state = [], action) => {
                 newHabitObject[i].points -= modifiedDecayPoints;
             }
         }
+        return newHabitObject;
+
+    }
+
+    if (action.type === RESET_WEEKLY_COUNTER) {
+        let newHabitObject = [...state];
+        if(newHabitObject.length > 0) {
+            for (i = 0; i < newHabitObject.length; i++) {
+                newHabitObject[i].weekCounter = newHabitObject[i].weekCounterLimit;
+            }
+        }
+
         return newHabitObject;
 
     }
@@ -59,13 +67,12 @@ const badHabitReducer = (state = [], action) => {
 
         let today = getTodayDate();
 
-        if (newHabitObject[action.habitIndex].lastUpdated !== today) {
-            //Gets points as how many seconds there is in a day
-            newHabitObject[action.habitIndex].points += 86400 ;
 
-            newHabitObject[action.habitIndex].lastUpdated = today;
-            newHabitObject[action.habitIndex].weekCounter -= 1;
-        }
+        newHabitObject[action.habitIndex].points += 172800 ;
+
+        newHabitObject[action.habitIndex].lastUpdated = today;
+        newHabitObject[action.habitIndex].weekCounter -= 1;
+
 
         return newHabitObject;
     }
@@ -82,6 +89,18 @@ const badHabitReducer = (state = [], action) => {
                 newHabitObject[i].points -= modifiedDecayPoints;
             }
         }
+        return newHabitObject;
+
+    }
+
+    if (action.type === RESET_WEEKLY_COUNTER) {
+        let newHabitObject = [...state];
+        if(newHabitObject.length > 0) {
+            for (i = 0; i < newHabitObject.length; i++) {
+                newHabitObject[i].weekCounter = newHabitObject[i].weekCounterLimit;
+            }
+        }
+
         return newHabitObject;
 
     }
@@ -105,6 +124,10 @@ const updateStatusReducer = (state = {}, action) => {
             lastOnline: Date.now(),
             nextWeeklyCounterReset: state.nextWeeklyCounterReset
         }
+    }
+
+    if (action.type === RESET_WEEKLY_COUNTER) {
+        return {...state, nextWeeklyCounterReset: getNextMonday()}
     }
 
     return state;

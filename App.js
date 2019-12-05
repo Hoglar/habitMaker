@@ -19,6 +19,7 @@ import getTodayDate from './functions/getTodayDate.js';
 import changeQuote from './redux/actions/changeQuote.js';
 import updateStatus from './redux/actions/updateStatus.js';
 import decayHabitpointsOnStart from './redux/actions/decayHabitpointsOnStart.js';
+import resetWeeklyCounter from './redux/actions/resetWeeklyCounter.js';
 // screens
 import GoodHabitStack from './screens/goodHabitStack.js';
 import BadHabitStack from './screens/badHabitStack.js';
@@ -84,10 +85,9 @@ export default class App extends React.Component {
             store.dispatch(decayHabitpointsOnStart(store.getState().status.decayPoints));
             // We check if today is the next monday where we get more pints!
 
-            console.log("next reset is ", store.getState().status.nextWeeklyCounterReset);
-            console.log("Today is", getTodayDate())
+
             if(store.getState().status.nextWeeklyCounterReset <= getTodayDate()) {
-                console.log("Were over it");
+                store.dispatch(resetWeeklyCounter());
             }
         } catch(error) {
             console.error(error)
@@ -107,7 +107,7 @@ export default class App extends React.Component {
         }
 
         // We save down here i guess
-
+        console.log("The state before start is", store.getState())
 
         return(
             <Provider store={store}>

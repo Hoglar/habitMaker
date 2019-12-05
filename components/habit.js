@@ -38,10 +38,11 @@ let today = getTodayDate();
 export default class Habit extends React.Component {
 
     async _completeDailyHabit() {
-        await this.props.dispatch(completeDailyGoodHabit(this.props.index));
-        // When we compleet we dispatch!
-        // And what needs to be done then!
-            // We need to
+        // We doo logic ifs here
+        if(this.props.habit.lastUpdated !== today && this.props.habit.weekCounter !== 0) {
+            await this.props.dispatch(completeDailyGoodHabit(this.props.index));
+        }
+        console.log("Cant update more today");
     }
 
     render() {
