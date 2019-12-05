@@ -19,12 +19,14 @@ const goodHabitReducer = (state = [], action) => {
 
         case COMPLETE_DAILY_GOOD_HABIT: {
             let newHabitObject = [...state];
-            let today = getTodayDate();
+            let i = action.habitIndex
 
-            newHabitObject[action.habitIndex].points += 172800 ;
-            newHabitObject[action.habitIndex].lastUpdated = today;
-            newHabitObject[action.habitIndex].weekCounter -= 1;
-
+            newHabitObject[i] = {
+                ...newHabitObject[i],
+                points: newHabitObject[i] + 172800,
+                lastUpdated: getTodayDate(),
+                weekCounter: newHabitObject[i] - 1
+            }
             return newHabitObject;
         }
 
@@ -63,12 +65,14 @@ const badHabitReducer = (state = [], action) => {
 
         case COMPLETE_DAILY_BAD_HABIT: {
             let newHabitObject = [...state];
-            let today = getTodayDate();
+            let i = action.habitIndex
 
-            newHabitObject[action.habitIndex].points += 172800 ;
-            newHabitObject[action.habitIndex].lastUpdated = today;
-            newHabitObject[action.habitIndex].weekCounter -= 1;
-
+            newHabitObject[i] = {
+                ...newHabitObject[i],
+                points: newHabitObject[i] + 172800,
+                lastUpdated: getTodayDate(),
+                weekCounter: newHabitObject[i] - 1
+            }
             return newHabitObject;
         }
         case DECAY_HABITPOINTS_ON_START: {
