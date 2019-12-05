@@ -44,7 +44,7 @@ export default class Habit extends React.Component {
     render() {
         return(
             <View style={styles.box}>
-                {(this.props.habit.lastUpdated !== today %% this.props.habit.weekCounter !== 0) ?
+                {(this.props.habit.lastUpdated !== today && this.props.habit.weekCounter !== 0) ?
                     <Button
                         title="Complete"
                         onPress={this._completeDailyHabit.bind(this)}></Button>

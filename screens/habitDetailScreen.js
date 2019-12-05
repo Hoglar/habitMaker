@@ -15,10 +15,18 @@ class HabitDetailScreen extends React.Component {
         else {
             habitDocument = this.props.badHabits[index]
         }
+
+        console.log("is it working still?")
         return (
             <View>
                 <Text>
                     {habitDocument.title}
+                </Text>
+                <Text>
+                    {habitDocument.description}
+                </Text>
+                <Text>
+                    {habitDocument.weekCounter}
                 </Text>
             </View>
         )

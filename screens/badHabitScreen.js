@@ -36,8 +36,9 @@ class BadHabitScreen extends React.Component {
                     <Habit  key={index}
                             index={index}
                             goodOrBad="badHabits"
-                            title={habit.title}
-                            navigation={this.props.navigation}/>
+                            habit={habit}
+                            navigation={this.props.navigation}
+                            dispatch={this.props.dispatch}/>
                 ))}
             </ScrollView>
         )
