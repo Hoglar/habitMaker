@@ -35,12 +35,16 @@ let today = getTodayDate();
 
 export default class Habit extends React.Component {
 
-    async _completeDailyHabit() {
+    componentWillUnmount() {
+        console.log("AAAAHRG");
+    }
+
+    _completeDailyHabit() {
         if(this.props.habit.lastUpdated !== today && this.props.habit.weekCounter !== 0) {
             if(this.props.goodOrBad === "goodHabits") {
-                await this.props.dispatch(completeDailyGoodHabit(this.props.index));
+                this.props.dispatch(completeDailyGoodHabit(this.props.index));
             } else {
-                await this.props.dispatch(completeDailyBadHabit(this.props.index));
+                this.props.dispatch(completeDailyBadHabit(this.props.index));
             }
 
         }

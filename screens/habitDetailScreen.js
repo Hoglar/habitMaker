@@ -3,6 +3,9 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
 
+import deleteBadHabit from '../redux/actions/deleteBadHabit.js';
+import deleteGoodHabit from '../redux/actions/deleteGoodHabit.js';
+
 // The plan for details.
 // We make a title at the top.
 // Then we have the description. This should be fixed size for the looks.
@@ -13,16 +16,38 @@ import { connect } from 'react-redux';
 
 
 class HabitDetailScreen extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            index: this.props.navigation.getParam("habitIndex", "err"),
+            goodOrBad: this.props.navigation.getParam("goodOrbad", "err")
+        }
+    }
+
+    // Doing the delete part async, i dont know if this is done right.
+    // but the idea is to make app unmount first, then delete.
+    async _deleteHabit() {
+        // This function dispatches an action to delete a habit,
+        if (this.state.goodOrBad === "goodHabits") {
+
+            setTimeout(() => {this.props.dispatch(deleteGoodHabit(this.state.index))}, 500);
+            this.props.navigation.goBack();
+        }
+        else {
+            this.props.navigation.goBack();
+            setTimeout(() => {this.props.dispatch(deleteBadHabit(this.state.index))}, 500);
+        }
+    }
+
     render() {
-        const index = this.props.navigation.getParam("habitIndex", "err");
-        const goodOrBad = this.props.navigation.getParam("goodOrbad", "err");
         let habitDocument = {};
-        if (goodOrBad === "goodHabits") {
-            habitDocument = this.props.goodHabits[index]
+        if (this.state.goodOrBad === "goodHabits") {
+            habitDocument = this.props.goodHabits[this.state.index]
 
         }
         else {
-            habitDocument = this.props.badHabits[index]
+            habitDocument = this.props.badHabits[this.state.index]
         }
 
         console.log("is it working still?")
@@ -40,7 +65,8 @@ class HabitDetailScreen extends React.Component {
                 </Text>
                 <Text>Level</Text>
                 <Button
-                    title="Delete">
+                    title="Delete"
+                    onPress={this._deleteHabit.bind(this)}>
                 </Button>
 
             </View>

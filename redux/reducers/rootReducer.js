@@ -9,7 +9,9 @@ import {CHANGE_QUOTE,
         COMPLETE_DAILY_BAD_HABIT,
         COMPLETE_DAILY_GOOD_HABIT,
         DECAY_HABITPOINTS_ON_START,
-        RESET_WEEKLY_COUNTER} from '../actions/actionTypes.js';
+        RESET_WEEKLY_COUNTER,
+        DELETE_BAD_HABIT,
+        DELETE_GOOD_HABIT} from '../actions/actionTypes.js';
 
 
 const goodHabitReducer = (state = [], action) => {
@@ -25,7 +27,7 @@ const goodHabitReducer = (state = [], action) => {
                 ...newHabitObject[i],
                 points: newHabitObject[i].points + 172800,
                 lastUpdated: getTodayDate(),
-                weekCounter: newHabitObject[i] - 1
+                weekCounter: newHabitObject[i].weekCounter - 1
             }
             return newHabitObject;
         }
@@ -53,6 +55,14 @@ const goodHabitReducer = (state = [], action) => {
 
             return newHabitObject;
         }
+
+        case DELETE_GOOD_HABIT: {
+            let newHabitArray = [...state];
+            newHabitArray.splice(action.index, 1)
+
+            return newHabitArray;
+        }
+
         default:
             return state;
     }
@@ -66,12 +76,11 @@ const badHabitReducer = (state = [], action) => {
         case COMPLETE_DAILY_BAD_HABIT: {
             let newHabitObject = [...state];
             let i = action.habitIndex
-            console.log("Are we getting hererererer")
             newHabitObject[i] = {
                 ...newHabitObject[i],
                 points: newHabitObject[i].points + 172800,
                 lastUpdated: getTodayDate(),
-                weekCounter: newHabitObject[i] - 1
+                weekCounter: newHabitObject[i].weekCounter - 1
             }
             return newHabitObject;
         }
@@ -98,6 +107,14 @@ const badHabitReducer = (state = [], action) => {
 
             return newHabitObject;
         }
+
+        case DELETE_BAD_HABIT: {
+            let newHabitArray = [...state];
+            newHabitArray.splice(action.index, 1)
+
+            return newHabitArray;
+        }
+
         default:
             return state;
     }
