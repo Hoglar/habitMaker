@@ -27,10 +27,9 @@ class HabitDetailScreen extends React.Component {
 
     // Doing the delete part async, i dont know if this is done right.
     // but the idea is to make app unmount first, then delete.
-    async _deleteHabit() {
+    _deleteHabit() {
         // This function dispatches an action to delete a habit,
         if (this.state.goodOrBad === "goodHabits") {
-
             setTimeout(() => {this.props.dispatch(deleteGoodHabit(this.state.index))}, 500);
             this.props.navigation.goBack();
         }

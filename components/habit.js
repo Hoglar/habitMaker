@@ -18,13 +18,21 @@ import getTodayDate from '../functions/getTodayDate.js';
 // Creating styles for habit box.
 
 const styles = StyleSheet.create({
-    box: {
-        height: 50,
+    habitBox: {
+        height: 60,
         backgroundColor: "teal",
+        justifyContent: "space-between"
+    },
+    habitBoxTop: {
         flexDirection: "row",
         justifyContent: "space-between",
-        alignItems: "center",
-        margin: 3
+        alignItems: "center"
+    },
+    progressBar: {
+        height: 10,
+        flexDirection: "row",
+        backgroundColor: "red",
+
     },
     text: {
 
@@ -52,29 +60,34 @@ export default class Habit extends React.Component {
 
     render() {
         return(
-            <View style={styles.box}>
-                {(this.props.habit.lastUpdated !== today && this.props.habit.weekCounter !== 0) ?
-                    <Button
-                        title="Complete"
-                        onPress={this._completeDailyHabit.bind(this)}></Button>
+            <View style={styles.habitBox}>
+                <View style={styles.habitBoxTop}>
+                    {(this.props.habit.lastUpdated !== today && this.props.habit.weekCounter !== 0) ?
+                        <Button
+                            title="Complete"
+                            onPress={this._completeDailyHabit.bind(this)}></Button>
 
-                        : null }
-                <Text style={styles.text}>
-                    {this.props.habit.title + "  "}
-                    {this.props.habit.points}
-                </Text>
+                            : null }
+                    <Text style={styles.text}>
+                        {this.props.habit.title + "  "}
+                        {this.props.habit.points}
+                    </Text>
 
-                <FontAwesome.Button
-                    iconStyle={{marginTop: 3}}
-                    padding={6}
-                    name="chevron-right"
-                    backgroundColor="transparent"
-                    size={26}
-                    onPress={() => this.props.navigation.navigate("HabitDetail", {
-                        habitIndex: this.props.index,
-                        goodOrbad: this.props.goodOrBad
-                    })}>
-                </FontAwesome.Button>
+                    <FontAwesome.Button
+                        iconStyle={{marginTop: 3}}
+                        padding={6}
+                        name="chevron-right"
+                        backgroundColor="transparent"
+                        size={26}
+                        onPress={() => this.props.navigation.navigate("HabitDetail", {
+                            habitIndex: this.props.index,
+                            goodOrbad: this.props.goodOrBad
+                        })}>
+                    </FontAwesome.Button>
+                </View>
+                <View style={styles.progressBar}>
+
+                </View>
             </View>
         )
     }
