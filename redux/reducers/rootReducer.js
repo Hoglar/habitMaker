@@ -12,7 +12,9 @@ import {CHANGE_QUOTE,
         DECAY_HABITPOINTS_ON_START,
         RESET_WEEKLY_COUNTER,
         DELETE_BAD_HABIT,
-        DELETE_GOOD_HABIT} from '../actions/actionTypes.js';
+        DELETE_GOOD_HABIT,
+        LEVEL_UP_GOOD_HABIT,
+        LEVEL_UP_BAD_HABIT} from '../actions/actionTypes.js';
 
 
 const goodHabitReducer = (state = [], action) => {
@@ -60,6 +62,21 @@ const goodHabitReducer = (state = [], action) => {
         case DELETE_GOOD_HABIT: {
             let newHabitArray = [...state];
             newHabitArray.splice(action.index, 1)
+
+            return newHabitArray;
+        }
+
+        case LEVEL_UP_GOOD_HABIT: {
+            let newHabitArray = [...state];
+            let i = action.index;
+
+            newHabitArray[i] = {
+                ...newHabitArray[i],
+                level: newHabitArray[i].level + 1,
+                difficulity: newHabitArray[i].difficulity + 0.1,
+                pointsNeededToLevel: newHabitArray[i].pointsNeededToLevel * 3,
+                points: 0
+            }
 
             return newHabitArray;
         }
@@ -112,6 +129,21 @@ const badHabitReducer = (state = [], action) => {
         case DELETE_BAD_HABIT: {
             let newHabitArray = [...state];
             newHabitArray.splice(action.index, 1)
+
+            return newHabitArray;
+        }
+
+        case LEVEL_UP_GOOD_HABIT: {
+            let newHabitArray = [...state];
+            let i = action.index;
+
+            newHabitArray[i] = {
+                ...newHabitArray[i],
+                level: newHabitArray[i].level + 1,
+                difficulity: newHabitArray[i].difficulity + 0.1,
+                pointsNeededToLevel: newHabitArray[i].pointsNeededToLevel * 3,
+                points: 1
+            }
 
             return newHabitArray;
         }

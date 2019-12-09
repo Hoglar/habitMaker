@@ -4,6 +4,8 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import saveStateToStorage from '../functions/saveStateToStorage.js';
 
+import levelUpGoodHabit from '../redux/actions/levelUpGoodHabit.js';
+import levelUpBadHabit from '../redux/actions/levelUpBadHabit.js';
 import completeDailyGoodHabit from '../redux/actions/completeDailyGoodHabit.js';
 import completeDailyBadHabit from '../redux/actions/completeDailyBadHabit.js';
 import getTodayDate from '../functions/getTodayDate.js';
@@ -60,8 +62,13 @@ export default class Habit extends React.Component {
 
     componentDidUpdate() {
         let progressMeter = this.props.habit.points / this.props.habit.pointsNeededToLevel;
+        console.log(progressMeter);
         if(progressMeter >= 1) {
-            this.props.dispatch(levelUpHabit(this.props.index));
+            if (this.props.goodOrBad === "goodHabits") {
+                this.props.dispatch(levelUpGoodHabit(this.props.index));
+            } else {
+                this.props.dispatch(levelUpBadHabit(this.props.index));
+            }
         }
     }
     // This function is just for testinga.
