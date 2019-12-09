@@ -74,7 +74,7 @@ const goodHabitReducer = (state = [], action) => {
                 ...newHabitArray[i],
                 level: newHabitArray[i].level + 1,
                 difficulity: newHabitArray[i].difficulity + 0.1,
-                pointsNeededToLevel: newHabitArray[i].pointsNeededToLevel * 3,
+                pointsNeededToLevel: newHabitArray[i].pointsNeededToLevel * 2,
                 points: 0
             }
 
@@ -141,7 +141,7 @@ const badHabitReducer = (state = [], action) => {
                 ...newHabitArray[i],
                 level: newHabitArray[i].level + 1,
                 difficulity: newHabitArray[i].difficulity + 0.1,
-                pointsNeededToLevel: newHabitArray[i].pointsNeededToLevel * 3,
+                pointsNeededToLevel: newHabitArray[i].pointsNeededToLevel * 2,
                 points: 1
             }
 
