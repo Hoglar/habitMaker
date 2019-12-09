@@ -29,23 +29,20 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     progressBarBox: {
-        height: 4,
+        margin: 2,
         flexDirection: "row",
-        flex: 1,
         backgroundColor: "grey",
         alignItems: "center",
-        bordertTopWidth: 1,
-        borderBottomWidth: 1,
-
+        borderWidth: 1,
+        height: 10,
     },
     progressBar: {
-        height: 12,
+        height: 6,
         flexDirection: "row",
-        backgroundColor: "red",
-        flex: 0.5,
+        backgroundColor: "yellow",
         borderWidth: 1,
-        marginLeft: 10,
-        marginRight: 10,
+        marginLeft: 1,
+        marginRight: 1,
     },
     text: {
 
@@ -72,6 +69,7 @@ export default class Habit extends React.Component {
     }
 
     render() {
+        console.log(this.state.progressBarProgress)
         return(
             <View style={styles.habitBox}>
                 <View style={styles.habitBoxTop}>
@@ -99,7 +97,7 @@ export default class Habit extends React.Component {
                     </FontAwesome.Button>
                 </View>
                 <View style={styles.progressBarBox}>
-                    <View style={styles.progressBar}>
+                    <View style={[styles.progressBar, {flex: (this.props.habit.points / this.props.habit.pointsNeededToLevel)}]}>
 
                     </View>
                 </View>
