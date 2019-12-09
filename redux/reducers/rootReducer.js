@@ -1,6 +1,7 @@
 'use strict';
 import {combineReducers} from 'redux';
 import getTodayDate from '../../functions/getTodayDate.js';
+import getNextMonday from '../../functions/getNextMonday.js';
 // actionTypes
 import {CHANGE_QUOTE,
         UPDATE_STATUS,

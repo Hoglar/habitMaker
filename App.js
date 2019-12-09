@@ -88,7 +88,7 @@ export default class App extends React.Component {
                 store.dispatch(resetWeeklyCounter());
             }
         } catch(error) {
-            console.error(error)
+            console.error(error, "Wee goot an error here in APP Loading!")
         }
     }
 

@@ -53,6 +53,7 @@ let today = getTodayDate();
 
 export default class Habit extends React.Component {
 
+
     componentWillUnmount() {
         console.log("AAAAHRG");
     }
@@ -69,7 +70,6 @@ export default class Habit extends React.Component {
     }
 
     render() {
-        console.log(this.state.progressBarProgress)
         return(
             <View style={styles.habitBox}>
                 <View style={styles.habitBoxTop}>
@@ -81,7 +81,6 @@ export default class Habit extends React.Component {
                             : null }
                     <Text style={styles.text}>
                         {this.props.habit.title + "  "}
-                        {this.props.habit.points}
                     </Text>
 
                     <FontAwesome.Button
