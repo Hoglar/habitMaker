@@ -36,7 +36,7 @@ const goodHabitReducer = (state = [], action) => {
         case DECAY_HABITPOINTS_ON_START: {
             let newHabitObject = [...state];
             for (i = 0; i < newHabitObject.length; i++) {
-                let modifiedDecayPoints = Math.floor(action.decayPoints * newHabitObject[i].difficulity)
+                let modifiedDecayPoints = ((Math.floor(action.decayPoints * newHabitObject[i].difficulity)) / 7) * newHabitObject[i].weekCounterLimit;
                 if ((newHabitObject[i].points - modifiedDecayPoints) <= 0 ) {
                     newHabitObject[i].points = 0;
                 } else {
@@ -88,7 +88,7 @@ const badHabitReducer = (state = [], action) => {
         case DECAY_HABITPOINTS_ON_START: {
             let newHabitObject = [...state];
             for (i = 0; i < newHabitObject.length; i++) {
-                let modifiedDecayPoints = Math.floor(action.decayPoints * newHabitObject[i].difficulity)
+                let modifiedDecayPoints = ((Math.floor(action.decayPoints * newHabitObject[i].difficulity)) / 7) * newHabitObject[i].weekCounterLimit;
                 if ((newHabitObject[i].points - modifiedDecayPoints) <= 0 ) {
                     newHabitObject[i].points = 0;
                 } else {

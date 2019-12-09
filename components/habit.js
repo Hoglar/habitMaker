@@ -58,6 +58,16 @@ export default class Habit extends React.Component {
         console.log("AAAAHRG");
     }
 
+    componentDidUpdate() {
+        let progressMeter = this.props.habit.points / this.props.habit.pointsNeededToLevel;
+        if(progressMeter >= 1) {
+            this.props.dispatch(levelUpHabit(this.props.index));
+        }
+    }
+    // This function is just for testinga.
+    completeDailyBadHabit() {
+        this.props.dispatch(completeDailyGoodHabit(this.props.index));
+    }
     _completeDailyHabit() {
         if(this.props.habit.lastUpdated !== today && this.props.habit.weekCounter !== 0) {
             if(this.props.goodOrBad === "goodHabits") {
@@ -73,6 +83,7 @@ export default class Habit extends React.Component {
         return(
             <View style={styles.habitBox}>
                 <View style={styles.habitBoxTop}>
+                        <Button title="test" onPress={this.completeDailyBadHabit.bind(this)}></Button>
                     {(this.props.habit.lastUpdated !== today && this.props.habit.weekCounter !== 0) ?
                         <Button
                             title="Complete"

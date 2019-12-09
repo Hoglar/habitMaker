@@ -80,7 +80,6 @@ export default class App extends React.Component {
             store.dispatch(changeQuote())
             store.subscribe(async () => {
                 await saveStateToStorage(store.getState())
-                console.log("expo er så klikk")
             })
             store.dispatch(decayHabitpointsOnStart(store.getState().status.decayPoints));
             // We check if today is the next monday where we get more pints!
@@ -103,9 +102,6 @@ export default class App extends React.Component {
                 />
             )
         }
-
-        // We save down here i guess
-        console.log("The state before start is", store.getState())
 
         return(
             <Provider store={store}>
