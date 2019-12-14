@@ -84,6 +84,7 @@ export default class Habit extends React.Component {
 
         }
     }
+    // Ckomme
 
     render() {
         return(
