@@ -30,6 +30,7 @@ class CreateHabitScreen extends React.Component {
             difficulity: 0.5,
             pointsNeededToLevel: 1000000,
             points: 1,
+            levelUpNotes: []
         }
     }
 

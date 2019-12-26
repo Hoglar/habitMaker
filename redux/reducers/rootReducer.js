@@ -14,7 +14,8 @@ import {CHANGE_QUOTE,
         DELETE_BAD_HABIT,
         DELETE_GOOD_HABIT,
         LEVEL_UP_GOOD_HABIT,
-        LEVEL_UP_BAD_HABIT} from '../actions/actionTypes.js';
+        LEVEL_UP_BAD_HABIT,
+        SAVE_LEVEL_UP_NOTE} from '../actions/actionTypes.js';
 
 
 const goodHabitReducer = (state = [], action) => {
@@ -67,7 +68,6 @@ const goodHabitReducer = (state = [], action) => {
         }
 
         case LEVEL_UP_GOOD_HABIT: {
-            console.log("Getting here then? to the reducer")
             let newHabitArray = [...state];
             let i = action.index;
 
@@ -80,6 +80,20 @@ const goodHabitReducer = (state = [], action) => {
             }
             console.log(newHabitArray)
             return newHabitArray;
+        }
+        case SAVE_LEVEL_UP_NOTE: {
+            if(action.payload.goodOrBad === "goodHabits") {
+                console.log("Updating good")
+                let newHabitArray = [...state];
+                let i = action.payload.index;
+
+                newHabitArray[i] = {
+                    ...newHabitArray[i],
+                    levelUpNotes: [...newHabitArray[i].levelUpNotes, action.payload.levelUpNote]
+                }
+
+                return newHabitArray;
+            }
         }
 
         default:
@@ -147,6 +161,20 @@ const badHabitReducer = (state = [], action) => {
             }
 
             return newHabitArray;
+        }
+
+        case SAVE_LEVEL_UP_NOTE: {
+            if(action.payload.goodOrBad === "badHabits") {
+                console.log("updating baad level note")
+                let newHabitArray = [...state];
+                let i = action.payload.index;
+                newHabitArray[i] = {
+                    ...newHabitArray[i],
+                    levelUpNotes: [...newHabitArray[i].levelUpNotes, action.paylpad.levelUpNote]
+                }
+
+                return newHabitArray;
+            }
         }
 
         default:

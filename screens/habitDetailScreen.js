@@ -21,7 +21,7 @@ class HabitDetailScreen extends React.Component {
         super(props);
         this.state = {
             index: this.props.navigation.getParam("habitIndex", "err"),
-            goodOrBad: this.props.navigation.getParam("goodOrbad", "err")
+            goodOrBad: this.props.navigation.getParam("goodOrBad", "err")
         }
     }
 

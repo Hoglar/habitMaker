@@ -57,23 +57,25 @@ export default class Habit extends React.Component {
 
 
     componentWillUnmount() {
-        console.log("AAAAHRG");
+        // WE can do shitt here
     }
 
     componentDidUpdate() {
         let progressMeter = this.props.habit.points / this.props.habit.pointsNeededToLevel;
-        console.log(progressMeter);
 
         if(progressMeter >= 1) {
             if (this.props.goodOrBad === "goodHabits") {
-                console.log("Index is" + this.props.index)
                 this.props.dispatch(levelUpGoodHabit(this.props.index));
-                console.log("did we send dispatch")
                 // after we should be taken to the level up screen.
                 // Så dette blir next step. Lage level up screen.
             } else {
                 this.props.dispatch(levelUpBadHabit(this.props.index));
             }
+            // When we level up we go to level up screen
+            this.props.navigation.navigate("LevelUp", {
+                habitIndex: this.props.index,
+                goodOrBad: this.props.goodOrBad
+            })
         }
     }
 
@@ -119,7 +121,7 @@ export default class Habit extends React.Component {
                         size={26}
                         onPress={() => this.props.navigation.navigate("HabitDetail", {
                             habitIndex: this.props.index,
-                            goodOrbad: this.props.goodOrBad
+                            goodOrBad: this.props.goodOrBad
                         })}>
                     </FontAwesome.Button>
                 </View>
