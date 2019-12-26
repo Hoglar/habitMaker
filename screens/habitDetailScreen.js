@@ -63,6 +63,9 @@ class HabitDetailScreen extends React.Component {
                     {habitDocument.weekCounter}
                 </Text>
                 <Text>Level</Text>
+                {(habitDocument.levelUpNotes.length > 0) ?
+                    <Text>{habitDocument.levelUpNotes[0]}</Text>
+                : null}
                 <Button
                     title="Delete"
                     onPress={this._deleteHabit.bind(this)}>
