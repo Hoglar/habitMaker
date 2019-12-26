@@ -7,16 +7,16 @@ import { createStackNavigator } from 'react-navigation-stack';
 import CreateHabitScreen from './createHabitScreen.js';
 import HabitDetailScreen from './habitDetailScreen.js';
 import BadHabitScreen from './badHabitScreen.js';
+import LevelUpScreen from './levelUpScreen.js';
 
 // Importing components
 import CustomHeader from '../components/customHeader.js';
 
-import store from '../redux/store/store.js';
-
 const BadHabitStack = createStackNavigator({
     BadHabitsHome: BadHabitScreen,
     CreateHabit: CreateHabitScreen,
-    HabitDetail: HabitDetailScreen
+    HabitDetail: HabitDetailScreen,
+    LevelUp: LevelUpScreen,
 },
 {
     initialRouteName: "BadHabitsHome",

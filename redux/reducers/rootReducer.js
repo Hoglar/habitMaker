@@ -67,6 +67,7 @@ const goodHabitReducer = (state = [], action) => {
         }
 
         case LEVEL_UP_GOOD_HABIT: {
+            console.log("Getting here then? to the reducer")
             let newHabitArray = [...state];
             let i = action.index;
 
@@ -75,9 +76,9 @@ const goodHabitReducer = (state = [], action) => {
                 level: newHabitArray[i].level + 1,
                 difficulity: newHabitArray[i].difficulity + 0.1,
                 pointsNeededToLevel: newHabitArray[i].pointsNeededToLevel * 2,
-                points: 0
+                points: 1
             }
-
+            console.log(newHabitArray)
             return newHabitArray;
         }
 
@@ -133,7 +134,7 @@ const badHabitReducer = (state = [], action) => {
             return newHabitArray;
         }
 
-        case LEVEL_UP_GOOD_HABIT: {
+        case LEVEL_UP_BAD_HABIT: {
             let newHabitArray = [...state];
             let i = action.index;
 

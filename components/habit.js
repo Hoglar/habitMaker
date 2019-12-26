@@ -63,9 +63,12 @@ export default class Habit extends React.Component {
     componentDidUpdate() {
         let progressMeter = this.props.habit.points / this.props.habit.pointsNeededToLevel;
         console.log(progressMeter);
+
         if(progressMeter >= 1) {
             if (this.props.goodOrBad === "goodHabits") {
+                console.log("Index is" + this.props.index)
                 this.props.dispatch(levelUpGoodHabit(this.props.index));
+                console.log("did we send dispatch")
                 // after we should be taken to the level up screen.
                 // Så dette blir next step. Lage level up screen.
             } else {
@@ -85,6 +88,9 @@ export default class Habit extends React.Component {
         }
     }
     // Ckomme
+    completeHabit() {
+        this.props.dispatch(completeDailyGoodHabit(this.props.index));
+    }
 
     render() {
         return(
@@ -96,6 +102,11 @@ export default class Habit extends React.Component {
                             onPress={this._completeDailyHabit.bind(this)}></Button>
 
                             : null }
+                        <Button
+                            title="tester"
+                            onPress={this.completeHabit.bind(this)}>
+
+                        </Button>
                     <Text style={styles.text}>
                         {this.props.habit.title + "  "}
                     </Text>
