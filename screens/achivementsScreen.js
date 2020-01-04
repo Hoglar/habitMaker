@@ -7,7 +7,7 @@ export default class AchivementsScreen extends React.Component {
         return (
             <View>
                 <Text>
-                    Hello! Achiver
+                    Hello! Achivers
                 </Text>
             </View>
         )
