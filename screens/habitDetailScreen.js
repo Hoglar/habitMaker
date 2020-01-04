@@ -64,7 +64,13 @@ class HabitDetailScreen extends React.Component {
                 </Text>
                 <Text>Level</Text>
                 {(habitDocument.levelUpNotes.length > 0) ?
-                    <Text>{habitDocument.levelUpNotes[0]}</Text>
+                    habitDocument.levelUpNotes.map((levelUpNote, index) => (
+                         <View key={index}>
+                             <Text>
+                                 {levelUpNote}
+                             </Text>
+                         </View>
+                    ))
                 : null}
                 <Button
                     title="Delete"
