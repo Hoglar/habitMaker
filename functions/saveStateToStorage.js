@@ -9,8 +9,7 @@ import {AsyncStorage} from 'react-native';
 async function saveStateToStorage(currentStore) {
 
     try {
-        await AsyncStorage.setItem("@habitMakerStore", JSON.stringify(currentStore))
-        console.log("We have saved!")
+        await AsyncStorage.setItem("@habitMakerStore", JSON.stringify(currentStore));
     } catch(error) {
         console.error(error)
     }

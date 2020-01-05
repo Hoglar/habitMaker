@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 
 import saveLevelUpNote from '../redux/actions/saveLevelUpNote.js';
+import saveAchievement from '../redux/actions/saveAchievement.js';
 
 class LevelUpScreen extends React.Component {
 
@@ -17,8 +18,14 @@ class LevelUpScreen extends React.Component {
     }
 
     _saveLevelUpNote() {
-        console.log(this.props)
         this.props.dispatch(saveLevelUpNote(this.state))
+        if(this.state.goodOrBad === "goodHabits") {
+            this.props.dispatch(saveAchievement(this.props.goodHabits[this.state.index]))
+        }
+        else {
+            this.props.dispatch(saveAchievement(this.props.badHabits[this.state.index]))
+        }
+
         this.props.navigation.goBack()
     }
 
@@ -41,5 +48,8 @@ class LevelUpScreen extends React.Component {
 }
 
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+    goodHabits: state.goodHabits,
+    badHabits: state.badHabits
+})
 export default connect(mapStateToProps)(LevelUpScreen);

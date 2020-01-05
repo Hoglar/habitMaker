@@ -66,7 +66,8 @@ export default class App extends React.Component {
                         lastOnline: Date.now(),
                         decayPoints: 0,
                         nextWeeklyCounterReset: getNextMonday()
-                    }
+                    },
+                    achievements: []
                 };
             }
             store = createStore(rootReducer, preLoadedStore);

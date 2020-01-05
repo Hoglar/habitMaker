@@ -49,7 +49,6 @@ class HabitDetailScreen extends React.Component {
             habitDocument = this.props.badHabits[this.state.index]
         }
 
-        console.log("is it working still?")
         return (
             <View>
                 <Text>
@@ -58,7 +57,9 @@ class HabitDetailScreen extends React.Component {
                 <Text>
                     {habitDocument.description}
                 </Text>
-                <Text>XP</Text>
+                <Text>
+                    {habitDocument.level}
+                </Text>
                 <Text>
                     {habitDocument.weekCounter}
                 </Text>

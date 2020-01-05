@@ -7,7 +7,6 @@ function getTodayDate() {
     let todayMonth = date.getMonth()
     let todayYear = date.getFullYear()
     let today = "" + todayYear + todayMonth + todayDate;
-
     return today;
 }
 

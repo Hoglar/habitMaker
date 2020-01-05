@@ -15,7 +15,8 @@ import {CHANGE_QUOTE,
         DELETE_GOOD_HABIT,
         LEVEL_UP_GOOD_HABIT,
         LEVEL_UP_BAD_HABIT,
-        SAVE_LEVEL_UP_NOTE} from '../actions/actionTypes.js';
+        SAVE_LEVEL_UP_NOTE,
+        SAVE_ACHIEVEMENT} from '../actions/actionTypes.js';
 
 
 const goodHabitReducer = (state = [], action) => {
@@ -78,18 +79,16 @@ const goodHabitReducer = (state = [], action) => {
                 pointsNeededToLevel: newHabitArray[i].pointsNeededToLevel * 2,
                 points: 1
             }
-            console.log(newHabitArray)
             return newHabitArray;
         }
         case SAVE_LEVEL_UP_NOTE: {
             if(action.payload.goodOrBad === "goodHabits") {
-                console.log("Updating good")
                 let newHabitArray = [...state];
                 let i = action.payload.index;
 
                 newHabitArray[i] = {
                     ...newHabitArray[i],
-                    levelUpNotes: [...newHabitArray[i].levelUpNotes, action.payload.levelUpNote]
+                    levelUpNotes: [action.payload.levelUpNote, ...newHabitArray[i].levelUpNotes]
                 }
 
                 return newHabitArray;
@@ -165,7 +164,6 @@ const badHabitReducer = (state = [], action) => {
 
         case SAVE_LEVEL_UP_NOTE: {
             if(action.payload.goodOrBad === "badHabits") {
-                console.log("updating baad level note")
                 let newHabitArray = [...state];
                 let i = action.payload.index;
                 newHabitArray[i] = {
@@ -208,11 +206,25 @@ const updateStatusReducer = (state = {}, action) => {
     }
 }
 
+const achievementsReducer = (state = [], action) => {
+    switch(action.type) {
+        case SAVE_ACHIEVEMENT:
+            let newAchievement = {
+                title: action.payload.title,
+                level: action.payload.level
+            }
+            return [...state, newAchievement]
+        default:
+            return state;
+    }
+}
+
 const reducer = combineReducers({
     goodHabits: goodHabitReducer,
     badHabits: badHabitReducer,
     quote: changeQuoteReducer,
-    status: updateStatusReducer
+    status: updateStatusReducer,
+    achievements: achievementsReducer
 })
 
 export default reducer;
