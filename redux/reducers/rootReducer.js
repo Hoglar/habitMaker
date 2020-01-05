@@ -213,6 +213,7 @@ const achievementsReducer = (state = [], action) => {
                 title: action.payload.title,
                 level: action.payload.level
             }
+            console.log("Are we doing it")
             return [...state, newAchievement]
         default:
             return state;

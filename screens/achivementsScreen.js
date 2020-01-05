@@ -1,15 +1,22 @@
 'use strict';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { connect } from 'react-redux';
 
-export default class AchivementsScreen extends React.Component {
+class AchivementsScreen extends React.Component {
     render() {
+        console.log(this.props.achievements)
         return (
             <View>
                 <Text>
-                    Hello! Achivers
+                    {this.props.achievements[0].title}
                 </Text>
             </View>
         )
     }
 }
+
+const mapStateToProps = state => ({
+    achievements: state.achievements
+})
+export default connect(mapStateToProps)(AchivementsScreen);
