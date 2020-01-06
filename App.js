@@ -23,14 +23,14 @@ import resetWeeklyCounter from './redux/actions/resetWeeklyCounter.js';
 // screens
 import GoodHabitStack from './screens/goodHabitStack.js';
 import BadHabitStack from './screens/badHabitStack.js';
-import AchivementsScreen from './screens/achivementsScreen.js';
+import AchievementsStack from './screens/achievementsStack.js';
 
 // We start the app in the Good habit screen. and with a press at bottom
 // we get to the bad habits.
 const MainScreenTabNavigator = createBottomTabNavigator({
     GoodHabits: GoodHabitStack,
     BadHabits: BadHabitStack,
-    Achivements: AchivementsScreen
+    Achievements: AchievementsStack
 },
 {
     initialRouteName: "GoodHabits",

@@ -213,8 +213,8 @@ const achievementsReducer = (state = [], action) => {
                 title: action.payload.title,
                 level: action.payload.level
             }
-            console.log("Are we doing it")
-            return [...state, newAchievement]
+            let newAchievementArray = [...state].filter(achievement => achievement.title != newAchievement.title)
+            return [...newAchievementArray, newAchievement]
         default:
             return state;
     }
