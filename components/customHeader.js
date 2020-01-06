@@ -17,7 +17,8 @@ class CustomHeader extends React.Component {
                     marginRight: 50,
                     color: "#3A3F3D",
                     lineHeight: 16,
-                    letterSpacing: 3
+                    letterSpacing: 3,
+
                 }}>
                     {this.props.quote.text + "."}
                 </Text>

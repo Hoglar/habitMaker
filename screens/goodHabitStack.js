@@ -25,7 +25,7 @@ const GoodHabitStack = createStackNavigator({
 
         headerStyle: {
             backgroundColor: '#84A1FF',
-
+            borderBottomWidth: 2,
         }
     }
 })

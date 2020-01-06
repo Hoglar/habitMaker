@@ -8,6 +8,28 @@ import saveNewGoodHabit from '../redux/actions/saveNewGoodHabit.js';
 import saveNewBadHabit from '../redux/actions/saveNewBadHabit.js';
 // How does a basic habbit look?
 
+const styles = StyleSheet.create({
+    habitCreateScreenBox: {
+        flex: 1,
+        justifyContent: "space-between",
+    },
+    habitTitleInput: {
+        margin: 5,
+        paddingLeft: 5,
+        paddingRight: 5,
+        fontSize: 20,
+        height: 40,
+        borderWidth: 2,
+    },
+    habitDescriptionInput: {
+        margin: 5,
+        padding: 5,
+        height: 200,
+        fontSize: 18,
+        borderWidth: 2,
+        textAlignVertical: "top"
+    }
+})
 
 
 class CreateHabitScreen extends React.Component {
@@ -56,21 +78,25 @@ class CreateHabitScreen extends React.Component {
     }
     render() {
         return (
-            <View>
+            <View style={styles.habitCreateScreenBox}>
+                <View>
+                    <TextInput
+                        style={styles.habitTitleInput}
+                        placeholder="Title"
+                        onChangeText={titleInput => this.setState({title: titleInput})}>
+                    </TextInput>
+                    <TextInput
+                        style={styles.habitDescriptionInput}
+                        placeholder="Description"
+                        multiline={true}
+                        onChangeText={descriptionInput=> this.setState({description: descriptionInput})}
+                        >
+                    </TextInput>
+                </View>
                 <Text>
                     Habits! we got ways to create habits
                 </Text>
-                <TextInput
-                    placeholder="Title"
-                    onChangeText={titleInput => this.setState({title: titleInput})}>
-                </TextInput>
-                <TextInput
-                    style={{textAlignVertical: "top"}}
-                    placeholder="Description"
-                    multiline={true}
-                    onChangeText={descriptionInput=> this.setState({description: descriptionInput})}
-                    >
-                </TextInput>
+
                 <Picker
                     selectedValue={this.state.weekCounterLimit}
                     style={{height: 50, width: 200}}
