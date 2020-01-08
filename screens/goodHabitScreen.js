@@ -16,41 +16,34 @@ class GoodHabitScreen extends React.Component {
         super(props)
     }
 
-    static navigationOptions = ({navigation}) => {
-        return {
-            headerRight: () => (
+    render() {
+        //this.props.dispatch(addHabit({title: "Hehehehehe"}))
+
+        return (
+            <View style={{flex: 1}}>
+                <ScrollView style={{flex: 1}}>
+                    {this.props.goodHabits.map((habit, index) => (
+                        <Habit  key={index}
+                                index={index}
+                                goodOrBad="goodHabits"
+                                habit={habit}
+                                navigation={this.props.navigation}
+                                dispatch={this.props.dispatch}/>
+                    ))}
+                </ScrollView>
                 <View style={{margin: 10}}>
                     <Button
-                        onPress={() => navigation.navigate('CreateHabit', {
+                        onPress={() => this.props.navigation.navigate('CreateHabit', {
                             goodOrBad: "good"
                         })}
                         title="Create"
                         color="green"
                     />
                 </View>
-
-            )
-        }
-    }
-
-    render() {
-        //this.props.dispatch(addHabit({title: "Hehehehehe"}))
-
-        return (
-            <ScrollView style={{flex: 1}}>
-                {this.props.goodHabits.map((habit, index) => (
-                    <Habit  key={index}
-                            index={index}
-                            goodOrBad="goodHabits"
-                            habit={habit}
-                            navigation={this.props.navigation}
-                            dispatch={this.props.dispatch}/>
-                ))}
-            </ScrollView>
+            </View>
         )
     }
 }
-
 
 
 const mapStateToProps = state => ({

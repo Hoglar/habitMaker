@@ -132,7 +132,7 @@ const badHabitReducer = (state = [], action) => {
         case RESET_WEEKLY_COUNTER: {
             let newHabitObject = [...state];
             if(newHabitObject.length > 0) {
-                for (i = 0; i < newHabitObject.length; i++) {
+                for (let i = 0; i < newHabitObject.length; i++) {
                     newHabitObject[i].weekCounter = newHabitObject[i].weekCounterLimit;
                 }
             }
