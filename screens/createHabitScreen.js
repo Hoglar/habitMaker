@@ -1,8 +1,7 @@
 'use strict';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Picker, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Picker, Button, KeyboardAvoidingView, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
-
 // Import actions
 import saveNewGoodHabit from '../redux/actions/saveNewGoodHabit.js';
 import saveNewBadHabit from '../redux/actions/saveNewBadHabit.js';
@@ -11,7 +10,7 @@ import saveNewBadHabit from '../redux/actions/saveNewBadHabit.js';
 const styles = StyleSheet.create({
     habitCreateScreenBox: {
         flex: 1,
-        justifyContent: "space-between",
+        justifyContent: "space-between"
     },
     habitTitleInput: {
         margin: 5,
@@ -24,11 +23,27 @@ const styles = StyleSheet.create({
     habitDescriptionInput: {
         margin: 5,
         padding: 5,
-        height: 200,
+        flex: 1,
         fontSize: 18,
         borderWidth: 2,
         textAlignVertical: "top"
+    },
+    createHabitButtonBox: {
+        margin: 5,
+        flexDirection: "row",
+        padding: 5,
+        height: 50,
+        borderWidth: 2,
+        alignItems: "center"
+
+    },
+    createHabitButton: {
+
+    },
+    createHabitPicker: {
+        flex: 1
     }
+
 })
 
 
@@ -78,46 +93,48 @@ class CreateHabitScreen extends React.Component {
     }
     render() {
         return (
-            <View style={styles.habitCreateScreenBox}>
-                <View>
-                    <TextInput
-                        style={styles.habitTitleInput}
-                        placeholder="Title"
-                        onChangeText={titleInput => this.setState({title: titleInput})}>
-                    </TextInput>
-                    <TextInput
-                        style={styles.habitDescriptionInput}
-                        placeholder="Description"
-                        multiline={true}
-                        onChangeText={descriptionInput=> this.setState({description: descriptionInput})}
-                        >
-                    </TextInput>
+            <KeyboardAvoidingView behavior="padding" enabled style={{flex: 1}}>
+                <View style={styles.habitCreateScreenBox}>
+                    <View style={{flex: 1}}>
+                        <TextInput
+                            style={styles.habitTitleInput}
+                            placeholder="Title"
+                            onChangeText={titleInput => this.setState({title: titleInput})}>
+                        </TextInput>
+                        <TextInput
+                            style={styles.habitDescriptionInput}
+                            placeholder="Description"
+                            multiline={true}
+                            onChangeText={descriptionInput=> this.setState({description: descriptionInput})}
+                            >
+                        </TextInput>
+
+                    </View>
+                    <View style={styles.createHabitButtonBox}>
+                        <Picker
+                          selectedValue={this.state.weekCounterLimit}
+                          style={styles.createHabitPicker}
+                          onValueChange={(itemValue, itemIndex) =>
+                              this.setState({weekCounterLimit: itemValue, weekCounter: itemValue})
+                          }>
+                          <Picker.Item label="Every day" value={7} />
+                          <Picker.Item label="Two times a week" value={2} />
+                          <Picker.Item label="Three times a week" value={3} />
+                          <Picker.Item label="Four times a week" value={4} />
+                          <Picker.Item label="Five times a week" value={5} />
+                          <Picker.Item label="Six times a week" value={6} />
+                          <Picker.Item label="Once a week" value={1}/>
+                        </Picker>
+                        <Button
+                            style={styles.createHabitButton}
+                            title="Create Habit"
+                            onPress={this._saveNewHabit.bind(this)}>
+
+                        </Button>
+                    </View>
                 </View>
-                <Text>
-                    Habits! we got ways to create habits
-                </Text>
-
-                <Picker
-                    selectedValue={this.state.weekCounterLimit}
-                    style={{height: 50, width: 200}}
-                    onValueChange={(itemValue, itemIndex) =>
-                        this.setState({weekCounterLimit: itemValue, weekCounter: itemValue})
-                    }>
-                    <Picker.Item label="Every day" value={7} />
-                    <Picker.Item label="Two times a week" value={2} />
-                    <Picker.Item label="Three times a week" value={3} />
-                    <Picker.Item label="Four times a week" value={4} />
-                    <Picker.Item label="Five times a week" value={5} />
-                    <Picker.Item label="Six times a week" value={6} />
-                    <Picker.Item label="Once a week" value={1}/>
-                </Picker>
-                <Button
-                    title="Create Habit"
-                    onPress={this._saveNewHabit.bind(this)}>
-
-                </Button>
-
-            </View>
+                <View style={{height: 85}}></View>
+            </KeyboardAvoidingView>
         )
     }
 }
