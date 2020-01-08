@@ -23,7 +23,10 @@ const styles = StyleSheet.create({
     habitBox: {
         height: 60,
         backgroundColor: "teal",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        margin: 5,
+        borderWidth: 2
+
     },
     habitBoxTop: {
         flexDirection: "row",

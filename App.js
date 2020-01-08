@@ -34,6 +34,12 @@ const MainScreenTabNavigator = createBottomTabNavigator({
 },
 {
     initialRouteName: "GoodHabits",
+    tabBarOptions: {
+        style: {
+            borderTopWidth: 2,
+            borderTopColor: "black"
+        }
+    }
 })
 
 let RootNavigation = createAppContainer(MainScreenTabNavigator);
