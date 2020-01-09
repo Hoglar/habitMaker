@@ -31,7 +31,7 @@ class GoodHabitScreen extends React.Component {
                                 dispatch={this.props.dispatch}/>
                     ))}
                 </ScrollView>
-                <View style={{margin: 5, borderWidth: 2}}>
+                <View style={{margin: 5, borderWidth: 2, backgroundColor: "green"}}>
                     <Button
                         onPress={() => this.props.navigation.navigate('CreateHabit', {
                             goodOrBad: "good"
