@@ -1,6 +1,6 @@
 'use strict';
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 
 import deleteBadHabit from '../redux/actions/deleteBadHabit.js';
@@ -14,6 +14,50 @@ import deleteGoodHabit from '../redux/actions/deleteGoodHabit.js';
 
 // If im to list the level up notes, this goes under here.
 
+
+const styles = StyleSheet.create({
+    habitDetailContainer: {
+        flex: 1,
+        justifyContent: "space-between",
+    },
+    habitDetailScrollView: {
+        flex: 1
+    },
+    habitDetailTitle: {
+        alignSelf: "center",
+        marginTop: 20,
+        marginBottom: 20,
+        fontSize: 20,
+        color: "#3A3F3D",
+        letterSpacing: 3,
+    },
+    habitDetailInfo: {
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-around",
+        padding: 10,
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
+    },
+    habitDetailDescription: {
+        flex: 1,
+        padding: 20,
+
+    },
+    habitDetailDescriptionText: {
+        letterSpacing: 1,
+        fontSize: 17,
+        color: "#3A3F3D",
+    },
+    habitDetailNote: {
+
+    },
+    habitDetailDeleteButton: {
+        margin: 5,
+        borderWidth: 2,
+        backgroundColor: "red",
+    }
+})
 
 class HabitDetailScreen extends React.Component {
 
@@ -50,34 +94,44 @@ class HabitDetailScreen extends React.Component {
         }
 
         return (
-            <View>
-                <Text>
-                    {habitDocument.title}
-                </Text>
-                <Text>
-                    {habitDocument.description}
-                </Text>
-                <Text>
-                    {habitDocument.level}
-                </Text>
-                <Text>
-                    {habitDocument.weekCounter}
-                </Text>
-                <Text>Level</Text>
-                {(habitDocument.levelUpNotes.length > 0) ?
-                    habitDocument.levelUpNotes.map((levelUpNote, index) => (
-                         <View key={index}>
-                             <Text>
-                                 {levelUpNote}
-                             </Text>
-                         </View>
-                    ))
-                : null}
-                <Button
-                    title="Delete"
-                    onPress={this._deleteHabit.bind(this)}>
-                </Button>
+            <View style={styles.habitDetailContainer}>
+                <ScrollView style={styles.habitDetailScrollView}>
+                    <View>
+                        <Text style={styles.habitDetailTitle}>
+                            {habitDocument.title}
+                        </Text>
+                    </View>
 
+                    <View style={styles.habitDetailInfo}>
+                        <Text>
+                            {habitDocument.level}
+                        </Text>
+                        <Text>
+                            {habitDocument.weekCounter}
+                        </Text>
+                    </View>
+                    <View style={styles.habitDetailDescription}>
+                        <Text style={styles.habitDetailDescriptionText}>
+                            {habitDocument.description}
+                        </Text>
+                    </View>
+                    {(habitDocument.levelUpNotes.length > 0) ?
+                        habitDocument.levelUpNotes.map((levelUpNote, index) => (
+                             <View key={index} style={styles.habitDetailNote}>
+                                 <Text>
+                                     {levelUpNote}
+                                 </Text>
+                             </View>
+                        ))
+                    : null}
+                </ScrollView>
+                <View style={styles.habitDetailDeleteButton}>
+                    <Button
+                        color="red"
+                        title="Delete"
+                        onPress={this._deleteHabit.bind(this)}>
+                    </Button>
+                </View>
             </View>
         )
     }
