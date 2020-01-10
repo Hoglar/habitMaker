@@ -41,16 +41,28 @@ const styles = StyleSheet.create({
     },
     habitDetailDescription: {
         flex: 1,
-        padding: 20,
 
     },
-    habitDetailDescriptionText: {
+    habitDetailText: {
         letterSpacing: 1,
         fontSize: 17,
         color: "#3A3F3D",
+        margin: 20
+    },
+    habitDetailNotes: {
+        flex: 1,
     },
     habitDetailNote: {
-
+        flex: 1,
+        padding: 5,
+        borderWidth: 1,
+        margin: 5,
+    },
+    habitDetailNoteInfo: {
+        letterSpacing: 1,
+        fontSize: 12,
+        color: "#3A3F3D",
+        fontStyle: "italic"
     },
     habitDetailDeleteButton: {
         margin: 5,
@@ -111,18 +123,23 @@ class HabitDetailScreen extends React.Component {
                         </Text>
                     </View>
                     <View style={styles.habitDetailDescription}>
-                        <Text style={styles.habitDetailDescriptionText}>
+                        <Text style={styles.habitDetailText}>
                             {habitDocument.description}
                         </Text>
                     </View>
                     {(habitDocument.levelUpNotes.length > 0) ?
-                        habitDocument.levelUpNotes.map((levelUpNote, index) => (
-                             <View key={index} style={styles.habitDetailNote}>
-                                 <Text>
-                                     {levelUpNote}
-                                 </Text>
-                             </View>
-                        ))
+                        <View style={styles.habitDetailNotes}>
+
+                            {habitDocument.levelUpNotes.map((levelUpNote, index) => (
+                                 <View key={index} style={styles.habitDetailNote}>
+                                     <Text style={styles.habitDetailNoteInfo}>Note created 19.20</Text>
+                                     <Text style={styles.habitDetailText}>
+                                         {levelUpNote}
+                                     </Text>
+                                 </View>
+                            ))}
+                        </View>
+
                     : null}
                 </ScrollView>
                 <View style={styles.habitDetailDeleteButton}>
