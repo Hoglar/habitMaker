@@ -237,10 +237,6 @@ const shortQuotes = [
         author: ""
     },
     {
-        text: "Every day may not be good but there is something good in every day",
-        author: ""
-    },
-    {
         text: "Don’t go through life, grow through life",
         author: "Eric Butterworth"
     },
@@ -435,34 +431,6 @@ const shortQuotes = [
     {
         text: "Always borrow money from a pessimist. He won’t expect it back",
         author: "Oscar Wilde"
-    },
-    {
-        text: "I love deadlines. I love the whooshing noise they make as they go by",
-        author: "Douglas Adams"
-    },
-    {
-        text: "I never feel more alone than when I’m trying to put sunscreen on my back",
-        author: "Jimmy Kimmel"
-    },
-    {
-        text: "Those are my principles, and if you don’t like them… well, I have others",
-        author: "Groucho Marx"
-    },
-    {
-        text: "The key to eating healthy is not eating any food that has a TV commercial",
-        author: "Mike Birbiglia"
-    },
-    {
-        text: "I’ve got to keep breathing. It’ll be my worst business mistake if I don’t",
-        author: "Steve Martin"
-    },
-    {
-        text: "There are three types of people in this world: those who can count, and those who can’t",
-        author: ""
-    },
-    {
-        text: "The closest a person ever comes to perfection is when he fills out a job application form",
-        author: ""
     },
     {
         text: "No rain. No flowers",

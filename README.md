@@ -20,3 +20,7 @@ https://paletton.com/#uid=7070B0k9zmw8IHV8OsL8gg+5s9z
 
 
 How many points do we need to get everyday to break even steven.
+
+
+Teksten nede kan endre seg ettersom man er i ulike moduser. når jeg er i create
+kan det stå jeg er i create.

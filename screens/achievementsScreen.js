@@ -7,7 +7,7 @@ class AchievementsScreen extends React.Component {
 
     render() {
         return (
-            <View>
+            <View style={{flex: 1, backgroundColor: "#536573"}}>
                 {(this.props.achievements.length > 0) ?
                     this.props.achievements.map((achievement, index) => (
                          <View key={index}>

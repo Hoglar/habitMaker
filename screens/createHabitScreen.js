@@ -10,7 +10,7 @@ import saveNewBadHabit from '../redux/actions/saveNewBadHabit.js';
 const styles = StyleSheet.create({
     habitCreateScreenBox: {
         flex: 1,
-        justifyContent: "space-between"
+        justifyContent: "space-between",
     },
     habitTitleInput: {
         margin: 5,
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         height: 40,
         borderWidth: 2,
+        backgroundColor: "#B39C7E"
     },
     habitDescriptionInput: {
         margin: 5,
@@ -26,7 +27,8 @@ const styles = StyleSheet.create({
         flex: 1,
         fontSize: 18,
         borderWidth: 2,
-        textAlignVertical: "top"
+        textAlignVertical: "top",
+        backgroundColor: "#B39C7E"
     },
     createHabitButtonBox: {
         margin: 5,
@@ -34,14 +36,16 @@ const styles = StyleSheet.create({
         padding: 5,
         height: 50,
         borderWidth: 2,
-        alignItems: "center"
+        alignItems: "center",
+        backgroundColor: "#B39C7E"
 
     },
     createHabitButton: {
-
+        backgroundColor: "#6E8393",
+        borderWidth: 1,
     },
     createHabitPicker: {
-        flex: 1
+        flex: 1,
     }
 
 })
@@ -92,8 +96,15 @@ class CreateHabitScreen extends React.Component {
 
     }
     render() {
+        let backgroundColor = "#96B3C9";
+        if (this.state.goodOrBad === "good") {
+            backgroundColor = "#5C8369"
+        }
+        else {
+            backgroundColor = "#B3867E"
+        }
         return (
-            <KeyboardAvoidingView behavior="padding" enabled style={{flex: 1}}>
+            <KeyboardAvoidingView behavior="padding" enabled style={{flex: 1, backgroundColor: backgroundColor}}>
                 <View style={styles.habitCreateScreenBox}>
                     <View style={{flex: 1}}>
                         <TextInput
@@ -125,12 +136,14 @@ class CreateHabitScreen extends React.Component {
                           <Picker.Item label="Six times a week" value={6} />
                           <Picker.Item label="Once a week" value={1}/>
                         </Picker>
-                        <Button
-                            style={styles.createHabitButton}
-                            title="Create Habit"
-                            onPress={this._saveNewHabit.bind(this)}>
+                        <View style={styles.createHabitButton}>
+                            <Button
+                                title="Create Habit"
+                                onPress={this._saveNewHabit.bind(this)}
+                                color="#6E8393">
+                            </Button>
+                        </View>
 
-                        </Button>
                     </View>
                 </View>
                 <View style={{height: 85}}></View>

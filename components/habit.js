@@ -22,7 +22,7 @@ import getTodayDate from '../functions/getTodayDate.js';
 const styles = StyleSheet.create({
     habitBox: {
         height: 60,
-        backgroundColor: "#B39D7E",
+        backgroundColor: "#B39C7E",
         justifyContent: "space-between",
         margin: 5,
         borderWidth: 2,
@@ -118,7 +118,7 @@ export default class Habit extends React.Component {
                         {(this.props.habit.lastUpdated !== today && this.props.habit.weekCounter !== 0) ?
                             <View style={styles.buttonBox}>
                                 <Button
-                                    color="#4A6352"
+                                    color="#6E8393"
                                     title="Complete"
                                     onPress={this._completeDailyHabit.bind(this)}>
                                 </Button>

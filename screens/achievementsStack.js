@@ -18,7 +18,7 @@ const AchievementsStack = createStackNavigator({
         headerTitle: <CustomHeader />,
 
         headerStyle: {
-            backgroundColor: '#84A1FF',
+            backgroundColor: '#536573',
             borderBottomWidth: 2,
 
         }
