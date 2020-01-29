@@ -22,10 +22,10 @@ import getTodayDate from '../functions/getTodayDate.js';
 const styles = StyleSheet.create({
     habitBox: {
         height: 60,
-        backgroundColor: "teal",
+        backgroundColor: "#B39D7E",
         justifyContent: "space-between",
         margin: 5,
-        borderWidth: 2
+        borderWidth: 2,
 
     },
     habitBoxTop: {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     progressBarBox: {
         margin: 2,
         flexDirection: "row",
-        backgroundColor: "grey",
+        backgroundColor: "#877864",
         alignItems: "center",
         borderWidth: 1,
         height: 10,
@@ -44,13 +44,29 @@ const styles = StyleSheet.create({
     progressBar: {
         height: 6,
         flexDirection: "row",
-        backgroundColor: "yellow",
+        backgroundColor: "#96B3C9",
         borderWidth: 1,
         marginLeft: 1,
         marginRight: 1,
     },
-    text: {
+    textBox: {
+        flexDirection: "row",
+        justifyContent: "flex-end",
+        flexWrap: "wrap",
+        flex: 1
 
+    },
+    text: {
+        fontSize: 18,
+        letterSpacing: 3,
+        color: "#292E31",
+
+    },
+    buttonBox: {
+        marginLeft: 2,
+        marginRight: 2,
+        borderWidth: 1,
+        backgroundColor: "#96B3C9"
     }
 })
 
@@ -92,35 +108,36 @@ export default class Habit extends React.Component {
 
         }
     }
-    // Ckomme
-    completeHabit() {
-        this.props.dispatch(completeDailyGoodHabit(this.props.index));
-    }
+    // Ckomm
 
     render() {
         return(
             <View style={styles.habitBox}>
                 <View style={styles.habitBoxTop}>
-                    {(this.props.habit.lastUpdated !== today && this.props.habit.weekCounter !== 0) ?
-                        <Button
-                            title="Complete"
-                            onPress={this._completeDailyHabit.bind(this)}></Button>
+                    <View>
+                        {(this.props.habit.lastUpdated !== today && this.props.habit.weekCounter !== 0) ?
+                            <View style={styles.buttonBox}>
+                                <Button
+                                    color="#4A6352"
+                                    title="Complete"
+                                    onPress={this._completeDailyHabit.bind(this)}>
+                                </Button>
+                            </View>
+                                : null }
+                    </View>
+                    <View style={styles.textBox}>
+                        <Text style={styles.text}>
+                            {this.props.habit.title + "  "}
+                        </Text>
+                    </View>
 
-                            : null }
-                        <Button
-                            title="tester"
-                            onPress={this.completeHabit.bind(this)}>
-
-                        </Button>
-                    <Text style={styles.text}>
-                        {this.props.habit.title + "  "}
-                    </Text>
 
                     <FontAwesome.Button
                         iconStyle={{marginTop: 3}}
                         padding={6}
                         name="chevron-right"
                         backgroundColor="transparent"
+                        color="#292E31"
                         size={26}
                         onPress={() => this.props.navigation.navigate("HabitDetail", {
                             habitIndex: this.props.index,

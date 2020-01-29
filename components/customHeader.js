@@ -15,7 +15,7 @@ class CustomHeader extends React.Component {
                     fontWeight: "300",
                     marginLeft: 20,
                     marginRight: 10,
-                    color: "#3A3F3D",
+                    color: "#FFE1BA",
                     lineHeight: 16,
                     letterSpacing: 3,
 

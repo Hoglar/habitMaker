@@ -116,10 +116,11 @@ class HabitDetailScreen extends React.Component {
 
                     <View style={styles.habitDetailInfo}>
                         <Text>
-                            {habitDocument.level}
+
+                            level: {habitDocument.level}
                         </Text>
                         <Text>
-                            {habitDocument.weekCounter}
+                            Week Counter: {habitDocument.weekCounter}
                         </Text>
                     </View>
                     <View style={styles.habitDetailDescription}>

@@ -20,7 +20,7 @@ class GoodHabitScreen extends React.Component {
         //this.props.dispatch(addHabit({title: "Hehehehehe"}))
 
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, backgroundColor: "#5C8369"}}>
                 <ScrollView style={{flex: 1}}>
                     {this.props.goodHabits.map((habit, index) => (
                         <Habit  key={index}
@@ -37,7 +37,7 @@ class GoodHabitScreen extends React.Component {
                             goodOrBad: "good"
                         })}
                         title="Create habit"
-                        color="green"
+                        color="#4A6352"
                     />
                 </View>
             </View>
