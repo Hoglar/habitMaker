@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 18,
         letterSpacing: 3,
-        color: "#292E31",
+        color: "black",
 
     },
     buttonBox: {
@@ -137,7 +137,7 @@ export default class Habit extends React.Component {
                         padding={6}
                         name="chevron-right"
                         backgroundColor="transparent"
-                        color="#292E31"
+                        color="#4C473F"
                         size={26}
                         onPress={() => this.props.navigation.navigate("HabitDetail", {
                             habitIndex: this.props.index,

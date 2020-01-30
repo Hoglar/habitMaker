@@ -56,7 +56,7 @@ const MainScreenTabNavigator = createBottomTabNavigator({
         },
         labelStyle: {
             fontSize: 16,
-            color: "#292E31",
+            color: "black",
 
         }
     }

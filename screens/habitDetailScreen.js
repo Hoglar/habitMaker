@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
         fontSize: 24,
-        color: "#292E31",
+        color: "black",
         letterSpacing: 3,
     },
     habitDetailInfo: {
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     habitDetailText: {
         letterSpacing: 1,
         fontSize: 17,
-        color: "#292E31",
+        color: "black",
         margin: 20
     },
     habitDetailNotes: {
@@ -98,20 +98,14 @@ class HabitDetailScreen extends React.Component {
         // We also make some style logic here.
         let backgroundColor = "#96B3C9";
         let boxColor = "grey";
-        let pickerColor = "white";
-        let placeholderColor = "black";
 
         if (this.state.goodOrBad === "goodHabits") {
             backgroundColor = "#5C8369";
             boxColor = "#7AA889";
-            pickerColor = "#4A6352";
-            placeholderColor = "#2E3831"
         }
         else {
             backgroundColor = "#B3867E";
             boxColor = "#E5B0A6";
-            pickerColor = "#876A64";
-            placeholderColor = "#4C413F"
         }
 
         let habitDocument = {};
