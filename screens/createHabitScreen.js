@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         height: 40,
         borderWidth: 2,
-        backgroundColor: "#B39C7E"
     },
     habitDescriptionInput: {
         margin: 5,
@@ -28,7 +27,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         borderWidth: 2,
         textAlignVertical: "top",
-        backgroundColor: "#B39C7E"
     },
     createHabitButtonBox: {
         margin: 5,
@@ -37,7 +35,6 @@ const styles = StyleSheet.create({
         height: 50,
         borderWidth: 2,
         alignItems: "center",
-        backgroundColor: "#B39C7E"
 
     },
     createHabitButton: {
@@ -97,31 +94,43 @@ class CreateHabitScreen extends React.Component {
     }
     render() {
         let backgroundColor = "#96B3C9";
+        let boxColor = "grey";
+        let pickerColor = "white";
+        let placeholderColor = "black";
+
         if (this.state.goodOrBad === "good") {
-            backgroundColor = "#5C8369"
+            backgroundColor = "#5C8369";
+            boxColor = "#7AA889";
+            pickerColor = "#4A6352";
+            placeholderColor = "#2E3831"
         }
         else {
-            backgroundColor = "#B3867E"
+            backgroundColor = "#B3867E";
+            boxColor = "#E5B0A6";
+            pickerColor = "#876A64";
+            placeholderColor = "#4C413F"
         }
         return (
             <KeyboardAvoidingView behavior="padding" enabled style={{flex: 1, backgroundColor: backgroundColor}}>
                 <View style={styles.habitCreateScreenBox}>
                     <View style={{flex: 1}}>
                         <TextInput
-                            style={styles.habitTitleInput}
+                            style={[styles.habitTitleInput, {backgroundColor: boxColor}]}
                             placeholder="Title"
+                            placeholderTextColor={placeholderColor}
                             onChangeText={titleInput => this.setState({title: titleInput})}>
                         </TextInput>
                         <TextInput
-                            style={styles.habitDescriptionInput}
+                            style={[styles.habitDescriptionInput, {backgroundColor: boxColor}]}
                             placeholder="Description"
+                            placeholderTextColor={placeholderColor}
                             multiline={true}
                             onChangeText={descriptionInput=> this.setState({description: descriptionInput})}
                             >
                         </TextInput>
 
                     </View>
-                    <View style={styles.createHabitButtonBox}>
+                    <View style={[styles.createHabitButtonBox, {backgroundColor: pickerColor}]}>
                         <Picker
                           selectedValue={this.state.weekCounterLimit}
                           style={styles.createHabitPicker}
