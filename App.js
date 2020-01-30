@@ -28,16 +28,36 @@ import AchievementsStack from './screens/achievementsStack.js';
 // We start the app in the Good habit screen. and with a press at bottom
 // we get to the bad habits.
 const MainScreenTabNavigator = createBottomTabNavigator({
-    GoodHabits: GoodHabitStack,
-    BadHabits: BadHabitStack,
+    GoodHabits: {
+        screen: GoodHabitStack,
+        navigationOptions: {
+            tabBarLabel: "Good",
+        },
+    },
+    BadHabits: {
+        screen: BadHabitStack,
+        navigationOptions: {
+            tabBarLabel: "Bad"
+        }
+    },
     Achievements: AchievementsStack
 },
 {
     initialRouteName: "GoodHabits",
     tabBarOptions: {
+        activeBackgroundColor: "#B39C7E",
         style: {
-            borderTopWidth: 2,
-            borderTopColor: "black"
+            borderTopWidth: 1,
+            borderTopColor: "black",
+            backgroundColor: "#877864",
+        },
+        tabStyle: {
+            borderWidth: 1
+        },
+        labelStyle: {
+            fontSize: 16,
+            color: "#292E31",
+
         }
     }
 })
