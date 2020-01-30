@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         marginTop: 20,
         marginBottom: 20,
-        fontSize: 20,
-        color: "#3A3F3D",
+        fontSize: 24,
+        color: "#292E31",
         letterSpacing: 3,
     },
     habitDetailInfo: {
@@ -41,12 +41,11 @@ const styles = StyleSheet.create({
     },
     habitDetailDescription: {
         flex: 1,
-
     },
     habitDetailText: {
         letterSpacing: 1,
         fontSize: 17,
-        color: "#3A3F3D",
+        color: "#292E31",
         margin: 20
     },
     habitDetailNotes: {
@@ -61,7 +60,7 @@ const styles = StyleSheet.create({
     habitDetailNoteInfo: {
         letterSpacing: 1,
         fontSize: 12,
-        color: "#3A3F3D",
+        color: "#292E31",
         fontStyle: "italic"
     },
     habitDetailDeleteButton: {
@@ -96,6 +95,25 @@ class HabitDetailScreen extends React.Component {
     }
 
     render() {
+        // We also make some style logic here.
+        let backgroundColor = "#96B3C9";
+        let boxColor = "grey";
+        let pickerColor = "white";
+        let placeholderColor = "black";
+
+        if (this.state.goodOrBad === "goodHabits") {
+            backgroundColor = "#5C8369";
+            boxColor = "#7AA889";
+            pickerColor = "#4A6352";
+            placeholderColor = "#2E3831"
+        }
+        else {
+            backgroundColor = "#B3867E";
+            boxColor = "#E5B0A6";
+            pickerColor = "#876A64";
+            placeholderColor = "#4C413F"
+        }
+
         let habitDocument = {};
         if (this.state.goodOrBad === "goodHabits") {
             habitDocument = this.props.goodHabits[this.state.index]
@@ -106,7 +124,7 @@ class HabitDetailScreen extends React.Component {
         }
 
         return (
-            <View style={styles.habitDetailContainer}>
+            <View style={[styles.habitDetailContainer, {backgroundColor: backgroundColor}]}>
                 <ScrollView style={styles.habitDetailScrollView}>
                     <View>
                         <Text style={styles.habitDetailTitle}>
@@ -132,7 +150,7 @@ class HabitDetailScreen extends React.Component {
                         <View style={styles.habitDetailNotes}>
 
                             {habitDocument.levelUpNotes.map((levelUpNote, index) => (
-                                 <View key={index} style={styles.habitDetailNote}>
+                                 <View key={index} style={[styles.habitDetailNote, {backgroundColor: boxColor}]}>
                                      <Text style={styles.habitDetailNoteInfo}>Note created 19.20</Text>
                                      <Text style={styles.habitDetailText}>
                                          {levelUpNote}
@@ -145,7 +163,7 @@ class HabitDetailScreen extends React.Component {
                 </ScrollView>
                 <View style={styles.habitDetailDeleteButton}>
                     <Button
-                        color="red"
+                        color="#4C413F"
                         title="Delete"
                         onPress={this._deleteHabit.bind(this)}>
                     </Button>
