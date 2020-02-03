@@ -67,6 +67,11 @@ const styles = StyleSheet.create({
         marginRight: 2,
         borderWidth: 1,
         backgroundColor: "#96B3C9"
+    },
+    levelViewer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        paddingLeft: 5
     }
 })
 
@@ -111,6 +116,10 @@ export default class Habit extends React.Component {
     // Ckomm
 
     render() {
+        let levelArrayBoxes = [];
+        for (let i = 0; i < this.props.habit.level; i++) {
+            levelArrayBoxes.push("item"+ i)
+        }
         return(
             <View style={styles.habitBox}>
                 <View style={styles.habitBoxTop}>
@@ -123,7 +132,20 @@ export default class Habit extends React.Component {
                                     onPress={this._completeDailyHabit.bind(this)}>
                                 </Button>
                             </View>
-                                : null }
+                                :
+                            <View style={styles.levelViewer}>
+                                {levelArrayBoxes.map((box, index) => {
+                                    return(
+                                        <FontAwesome
+                                            style={{marginRight: 1}}
+                                            key={index}
+                                            name="square"
+                                            backgroundColor="transparent"
+                                            color="#4C473F">
+                                        </FontAwesome>
+                                    )
+                                })}
+                            </View> }
                     </View>
                     <View style={styles.textBox}>
                         <Text style={styles.text}>
