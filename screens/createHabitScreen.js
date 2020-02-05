@@ -78,6 +78,9 @@ class CreateHabitScreen extends React.Component {
 
         if(this.state.title === "") {
             alert("Input title!");
+
+        } else if (this.state.title.length > 15){
+            alert("Title to long, max 15 letters")
         } else {
             if (this.state.goodOrBad === "good") {
                 this.props.dispatch(saveNewGoodHabit(this.state))

@@ -110,10 +110,19 @@ export default class Habit extends React.Component {
             } else {
                 this.props.dispatch(completeDailyBadHabit(this.props.index));
             }
-
         }
     }
+
+
     // Ckomm
+    completeDailyHabit() {
+        if(this.props.goodOrBad === "goodHabits") {
+            this.props.dispatch(completeDailyGoodHabit(this.props.index));
+        } else {
+            this.props.dispatch(completeDailyBadHabit(this.props.index));
+        }
+    }
+
 
     render() {
         let levelArrayBoxes = [];
@@ -134,6 +143,10 @@ export default class Habit extends React.Component {
                             </View>
                                 :
                             <View style={styles.levelViewer}>
+                                <Button title="tester"
+                                        onPress={this.completeDailyHabit.bind(this)}>
+
+                                </Button>
                                 {levelArrayBoxes.map((box, index) => {
                                     return(
                                         <FontAwesome

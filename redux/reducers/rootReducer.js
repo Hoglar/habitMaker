@@ -2,6 +2,7 @@
 import {combineReducers} from 'redux';
 import getTodayDate from '../../functions/getTodayDate.js';
 import getNextMonday from '../../functions/getNextMonday.js';
+import getPresentableTodayDate from '../../functions/getPresentableTodayDate.js'
 // actionTypes
 import {CHANGE_QUOTE,
         UPDATE_STATUS,
@@ -168,7 +169,7 @@ const badHabitReducer = (state = [], action) => {
                 let i = action.payload.index;
                 newHabitArray[i] = {
                     ...newHabitArray[i],
-                    levelUpNotes: [...newHabitArray[i].levelUpNotes, action.paylpad.levelUpNote]
+                    levelUpNotes: [...newHabitArray[i].levelUpNotes, action.payload.levelUpNote]
                 }
 
                 return newHabitArray;
@@ -209,9 +210,13 @@ const updateStatusReducer = (state = {}, action) => {
 const achievementsReducer = (state = [], action) => {
     switch(action.type) {
         case SAVE_ACHIEVEMENT:
+            console.log(action.payload)
             let newAchievement = {
                 title: action.payload.title,
-                level: action.payload.level
+                level: action.payload.level,
+                goodOrBad: action.payload.goodOrBad,
+                levelUpDate: getPresentableTodayDate()
+
             }
             let newAchievementArray = [...state].filter(achievement => achievement.title != newAchievement.title)
             return [...newAchievementArray, newAchievement]
