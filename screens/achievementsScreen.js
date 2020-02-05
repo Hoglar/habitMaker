@@ -10,10 +10,10 @@ const styles = StyleSheet.create({
         backgroundColor: "#536573",
     },
     achievementScreenView: {
-            flex: 1,
-            flexDirection: "row",
-            flexWrap: "wrap",
-            justifyContent: "space-between"
+        flex: 1,
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "space-between"
     },
     singleAchievementBox: {
         margin: 10,
@@ -27,13 +27,16 @@ const styles = StyleSheet.create({
     boxTitle: {
         fontSize: 16,
         letterSpacing: 3
+    },
+    boxDate: {
+        fontSize: 11,
+        letterSpacing: 2
     }
 })
 
 class AchievementsScreen extends React.Component {
 
     render() {
-        console.log(this.props.achievements)
         return (
 
             <ScrollView style={styles.achievementScreenMainframe}>
@@ -50,9 +53,9 @@ class AchievementsScreen extends React.Component {
                                      {achievement.title}
                                  </Text>
                                  <Text>
-                                     {achievement.level}
+                                     Level: {achievement.level}
                                  </Text>
-                                 <Text>
+                                 <Text style={styles.boxDate}>
                                      {achievement.levelUpDate || "0000"}
                                  </Text>
                              </View>
