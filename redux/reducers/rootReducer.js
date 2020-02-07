@@ -210,7 +210,6 @@ const updateStatusReducer = (state = {}, action) => {
 const achievementsReducer = (state = [], action) => {
     switch(action.type) {
         case SAVE_ACHIEVEMENT:
-            console.log(action.payload)
             let newAchievement = {
                 title: action.payload.title,
                 level: action.payload.level,

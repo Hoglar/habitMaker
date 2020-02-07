@@ -16,8 +16,6 @@ What else do we need?
 
 expo may need some extra installations based on features i want to use.
 https://wisdomquotes.com/short-quotes/
-https://paletton.com/#uid=7070B0k9zmw8IHV8OsL8gg+5s9z
-
 
 How many points do we need to get everyday to break even steven.
 

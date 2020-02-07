@@ -440,6 +440,287 @@ const shortQuotes = [
         text: "Shine like the stars",
         author: ""
     },
+    {
+        text: "Be a voice. Not an echo",
+        author: ""
+    },
+    {
+        text: "Every wall is a door",
+        author: ""
+    },
+    {
+        text: "Silence is an answer too",
+        author: ""
+    },
+    {
+        text: "If youth knew; if age could",
+        author: "Sigmund Freud"
+    },
+    {
+        text: "Time is the soul of this world",
+        author: "Pythagoras"
+    },
+    {
+        text: "Stars can’t shine without darkness",
+        author: ""
+    },
+    {
+        text: "He not busy being born is busy dying",
+        author: "Bob Dylan"
+    },
+    {
+        text: "It takes a long time to become young",
+        author: "Pablo Picasso"
+    },
+    {
+        text: "Be who you needed when you were young",
+        author: ""
+    },
+    {
+        text: "Innocence is courage and clarity both",
+        author: "Osho"
+    },
+    {
+        text: "Find what you love and let it kill you",
+        author: "Charles Bukowsk"
+    },
+    {
+        text: "Sadness flies away on the wings of time",
+        author: "Jean de La Fontaine"
+    },
+    {
+        text: "I am not young enough to know everything",
+        author: "Oscar Wilde"
+    },
+    {
+        text: "Life is like the ocean, it goes up and down",
+        author: "Vanessa Paradis"
+    },
+    {
+        text: "The eyes are useless when the mind is blind",
+        author: ""
+    },
+    {
+        text: "If you’re not confused, you’re not paying attention",
+        author: ""
+    },
+    {
+        text: "You’ve gotta know what death is to know life",
+        author: "Jack Kevorkian"
+    },
+    {
+        text: "Don’t let yesterday take up too much of today",
+        author: "Will Rogers"
+    },
+    {
+        text: "Forgiveness is giving up hope for a better past",
+        author: ""
+    },
+    {
+        text: "Be kind to unkind people, they need it the most",
+        author: ""
+    },
+    {
+        text: "Solitary trees, if they grow at all, grow strong",
+        author: "Winston Churchill"
+    },
+    {
+        text: "Character like a photograph, develops in darkness",
+        author: ""
+    },
+    {
+        text: "God provides the wind, but man must raise the sails",
+        author: "Augustine of Hippo"
+    },
+    {
+        text: "Enlightenment is when a wave realizes it is the ocean",
+        author: ""
+    },
+    {
+        text: "This is your life, and it’s ending one minute at a time",
+        author: ""
+    },
+    {
+        text: "Your faith can move mountains and your doubt can create them",
+        author: ""
+    },
+    {
+        text: "You have to be odd to be number one",
+        author: "Dr. Seuss"
+    },
+    {
+        text: "Please all, and you will please none",
+        author: "Aesop"
+    },
+    {
+        text: "The fool wonders, the wise man asks",
+        author: "Benjamin Disraeli"
+    },
+    {
+        text: "A smooth sea never made a skillful sailor",
+        author: ""
+    },
+    {
+        text: "Pain is inevitable. Suffering is optional",
+        author: ""
+    },
+    {
+        text: "A man can’t ride your back unless it’s bent",
+        author: "Martin Luther King Jr"
+    },
+    {
+        text: "Don’t raise your voice. Improve your argument",
+        author: ""
+    },
+    {
+        text: "Some people are so poor, all they have is money",
+        author: "Jack Kerouac"
+    },
+    {
+        text: "All generalizations are false, including this one",
+        author: "Mark Twain"
+    },
+    {
+        text: "It’s not what you look at that matters, it’s what you see",
+        author: "Henry David Thoreau"
+    },
+    {
+        text: "There is no saint without a past, no sinner without a future",
+        author: "Augustine of Hippo"
+    },
+    {
+        text: "So it goes",
+        author: "Kurt Vonnegut"
+    },
+    {
+        text: "Life is not fair; get used to it",
+        author: "Bill Gates"
+    },
+    {
+        text: "Anything worth doing is worth doing slowly",
+        author: "Mae West"
+    },
+    {
+        text: "Don’t wait. Life goes faster than you think",
+        author: ""
+    },
+    {
+        text: "Be soft. Do not let the world make you hard",
+        author: ""
+    },
+    {
+        text: "Life is too important to be taken seriously",
+        author: "Oscar Wilde"
+    },
+    {
+        text: "Life is either a daring adventure or nothing",
+        author: "Helen Keller"
+    },
+    {
+        text: "The sole meaning of life is to serve humanity",
+        author: "Leo Tolstoy"
+    },
+    {
+        text: "Love the life you live. Lead the life you love",
+        author: "Bob Marley"
+    },
+    {
+        text: "Life got to be about more than just solving problems",
+        author: "Elon Musk"
+    },
+    {
+        text: "Life isn’t as serious as the mind makes it out to be",
+        author: "Eckhart Tolle"
+    },
+    {
+        text: "Life shrinks or expands in proportion to one’s courage",
+        author: "Anaïs Nin"
+    },
+    {
+        text: "You only live once, but if you do it right, once is enough",
+        author: "Mae West"
+    },
+    {
+        text: "Different doesn’t mean wrong",
+        author: ""
+    },
+    {
+        text: "Make yourself a priority",
+        author: ""
+    },
+    {
+        text: "I’m currently under construction. Thank you for your patience",
+        author: ""
+    },
+    {
+        text: "A happy wife is a happy life",
+        author: ""
+    },
+    {
+        text: "Never expect anything. You’ll never be disappointed",
+        author: ""
+    },
+    {
+        text: "Enough’ is a feast",
+        author: ""
+    },
+    {
+        text: "Joy is the simplest form of gratitude",
+        author: "Karl Barth"
+    },
+    {
+        text: "A grateful heart is a magnet for miracles",
+        author: ""
+    },
+    {
+        text: "Fair and softly goes far",
+        author: "Miguel de Cervantes"
+    },
+    {
+        text: "Do less. Be more",
+        author: "Neil Strauss"
+    },
+    {
+        text: "Dreams don’t work unless you do",
+        author: ""
+    },
+    {
+        text: "Everything you can imagine is real",
+        author: "Pablo Picasso"
+    },
+    {
+        text: "If you give up on your dreams, what’s left?",
+        author: "Jim Carrey"
+    },
+    {
+        text: "Good things take time",
+        author: ""
+    },
+    {
+        text: "Time eases all things",
+        author: "Socrates"
+    },
+    {
+        text: "Don’t wait. The time will never be just right",
+        author: "Mark Twain"
+    },
+    {
+        text: "Own less. Do more",
+        author: ""
+    },
+    {
+        text: "More life, less rush",
+        author: ""
+    },
+    {
+        text: "Slow and steady wins the race",
+        author: ""
+    },
+
+
+
+
+
 
 
 

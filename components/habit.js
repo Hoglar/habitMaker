@@ -80,10 +80,6 @@ let today = getTodayDate();
 export default class Habit extends React.Component {
 
 
-    componentWillUnmount() {
-        // WE can do shitt here
-    }
-
     componentDidUpdate() {
         let progressMeter = this.props.habit.points / this.props.habit.pointsNeededToLevel;
 
@@ -114,16 +110,6 @@ export default class Habit extends React.Component {
     }
 
 
-    // Ckomm
-    completeDailyHabit() {
-        if(this.props.goodOrBad === "goodHabits") {
-            this.props.dispatch(completeDailyGoodHabit(this.props.index));
-        } else {
-            this.props.dispatch(completeDailyBadHabit(this.props.index));
-        }
-    }
-
-
     render() {
         let levelArrayBoxes = [];
         for (let i = 0; i < this.props.habit.level; i++) {
@@ -143,10 +129,6 @@ export default class Habit extends React.Component {
                             </View>
                                 :
                             <View style={styles.levelViewer}>
-                                <Button title="tester"
-                                        onPress={this.completeDailyHabit.bind(this)}>
-
-                                </Button>
                                 {levelArrayBoxes.map((box, index) => {
                                     return(
                                         <FontAwesome
