@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "habitMaker",
+    "name": "Habit Maker",
     "slug": "habitMaker",
+    "description": "This app helps you keeping track of you good and bad habits",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
@@ -11,9 +12,13 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/habitMakerIcon1.png",
     "splash": {
-      "backgroundColor": "#84A1FF"
+      "backgroundColor": "#536673"
+    },
+    "android": {
+        "package": "com.hoglar.habitMaker",
+        "versionCode": 1
     },
     "updates": {
       "fallbackToCacheTimeout": 0
